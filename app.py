@@ -58,12 +58,12 @@ def mapa():
         <div>
             <ul>
                 <li><b>Q1 SN:</b> """ + str(df["q1_SN"][0]) + """</li>
-                <li><b>Q1 Mínimo:</b> 123.456</li>
-                <li><b>Q1 Máximo:</b> 123.456</li>
-                <li><b>Sin nieve, 2017 - 2018:</b> 123.456</li>
-                <li><b>Ganancia, 2017 - 2018:</b> 123.456</li>
-                <li><b>Pérdida, 2017 - 2018:</b> 123.456</li>
-                <li><b>SC, 2017 - 2018:</b> 123.456</li>
+                <li><b>Q1 Mínimo:</b> """ + str(df["q1_Min"][0]) + """</li>
+                <li><b>Q1 Máximo:</b> """ + str(df["q1_Max"][0]) + """</li>
+                <li><b>Q1 Sin nieve, 2017 - 2018:</b> """ + str(df["SN_1718q1"][0]) + """</li>
+                <li><b>Q1 Ganancia, 2017 - 2018:</b> """ + str(df["G_1718q1"][0]) + """</li>
+                <li><b>Q1 Pérdida, 2017 - 2018:</b> """ + str(df["P_1718q1"][0]) + """</li>
+                <li><b>Q1 SC, 2017 - 2018:</b> """ + str(df["SC_1718q1"][0]) + """</li>
             </ul>
         </div>
     """
