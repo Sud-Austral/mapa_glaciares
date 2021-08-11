@@ -57,13 +57,13 @@ def mapa():
         <h3>Datos e información</h3>
         <div>
             <ul>
-                <li><b>Q1 SN:</b> """ + str(df["q1_SN"][0]) + """</li>
-                <li><b>Q1 Mínimo:</b> """ + str(df["q1_Min"][0]) + """</li>
-                <li><b>Q1 Máximo:</b> """ + str(df["q1_Max"][0]) + """</li>
-                <li><b>Q1 Sin nieve, 2017 - 2018:</b> """ + str(df["SN_1718q1"][0]) + """</li>
-                <li><b>Q1 Ganancia, 2017 - 2018:</b> """ + str(df["G_1718q1"][0]) + """</li>
-                <li><b>Q1 Pérdida, 2017 - 2018:</b> """ + str(df["P_1718q1"][0]) + """</li>
-                <li><b>Q1 SC, 2017 - 2018:</b> """ + str(df["SC_1718q1"][0]) + """</li>
+                <li><b>Q1 SN:</b> """ + str(df["q1_SN"][1]) + """</li>
+                <li><b>Q1 Mínimo:</b> """ + str(df["q1_Min"][1]) + """</li>
+                <li><b>Q1 Máximo:</b> """ + str(df["q1_Max"][1]) + """</li>
+                <li><b>Q1 Sin nieve, 2017 - 2018:</b> """ + str(df["SN_1718q1"][1]) + """</li>
+                <li><b>Q1 Ganancia, 2017 - 2018:</b> """ + str(df["G_1718q1"][1]) + """</li>
+                <li><b>Q1 Pérdida, 2017 - 2018:</b> """ + str(df["P_1718q1"][1]) + """</li>
+                <li><b>Q1 SC, 2017 - 2018:</b> """ + str(df["SC_1718q1"][1]) + """</li>
             </ul>
         </div>
     """
