@@ -13,7 +13,7 @@ def mapa():
 
     try:
         id = request.args.get("id")
-        id = str(id)
+        id = id
     except:
         id = 1
     
@@ -34,7 +34,7 @@ def mapa():
         
         )
     
-    folium.GeoJson(datosGlaciar, 
+    folium.GeoJson(json.loads(requests.get(salida).text), 
                     name="Glaciares",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip=salida
