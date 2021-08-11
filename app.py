@@ -13,7 +13,7 @@ def mapa():
 
     try:
         id = request.args.get("id")
-        id = id
+        id = str(id)
     except:
         id = 1
     
