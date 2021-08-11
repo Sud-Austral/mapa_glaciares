@@ -17,7 +17,7 @@ def mapa():
     except:
         id = 1
     
-    datos = "http://ide.dataintelligence-group.com/mapasdi/temperatura/13101.csv"
+    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
     df = pd.read_csv(datos)
 
     df = df[df["idZonGlac"] == id]
@@ -57,7 +57,7 @@ def mapa():
         <h3>Datos e información</h3>
         <div>
             <ul>
-                <li><b>Q1 SN:</b> 123.456</li>
+                <li><b>Q1 SN:</b> """ + df["q1_SN"] + """</li>
                 <li><b>Q1 Mínimo:</b> 123.456</li>
                 <li><b>Q1 Máximo:</b> 123.456</li>
                 <li><b>Sin nieve, 2017 - 2018:</b> 123.456</li>
