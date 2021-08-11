@@ -68,7 +68,7 @@ def mapa():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=250, height=180)
+    iframe = folium.IFrame(html=html, width=250, height=190)
     _popup = folium.Popup(iframe, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
