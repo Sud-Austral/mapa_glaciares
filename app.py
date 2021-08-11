@@ -28,17 +28,16 @@ def mapa():
 
     salida = {'type:':'FeatureCollection','features':output_dict}
     
-    input = json.loads(salida)
-
     m = folium.Map(
         location=[-33.48621795345005, -70.66557950912359],
         zoom_start=8,
         
         )
     
-    folium.GeoJson(input, 
+    folium.GeoJson(datosGlaciar, 
                     name="Glaciares",
-                    tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
+                    # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
+                    tooltip="Hola"
                     ).add_to(m)
 
     folium.LayerControl().add_to(m)
