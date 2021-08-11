@@ -35,18 +35,33 @@ def mapa():
         )
     
     html="""
+
+        <style>
+            *{
+                font-family: Arial, Tahoma;
+            }
+            
+            ul li{
+                text-decoration: none;
+            }
+
+        </style>
+
+        <h3>Datos e información</h3>
         <div>
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
+                <li><b>Q1 SN:</b> 123.456</li>
+                <li><b>Q1 Mínimo:</b> 123.456</li>
+                <li><b>Q1 Máximo:</b> 123.456</li>
+                <li><b>Sin nieve, 2017 - 2018:</b> 123.456</li>
+                <li><b>Ganancia, 2017 - 2018:</b> 123.456</li>
+                <li><b>Pérdida, 2017 - 2018:</b> 123.456</li>
+                <li><b>SC, 2017 - 2018:</b> 123.456</li>
             </ul>
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=450, height=300)
+    iframe = folium.IFrame(html=html, width=250, height=180)
     _popup = folium.Popup(iframe, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
