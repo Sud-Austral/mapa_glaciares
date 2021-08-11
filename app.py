@@ -57,7 +57,7 @@ def mapa():
         <h3>Datos e información</h3>
         <div>
             <ul>
-                <li><b>Q1 SN:</b> """ + df["q1_SN"][0] + """</li>
+                <li><b>Q1 SN:</b> """ + str(df["q1_SN"][0]) + """</li>
                 <li><b>Q1 Mínimo:</b> 123.456</li>
                 <li><b>Q1 Máximo:</b> 123.456</li>
                 <li><b>Sin nieve, 2017 - 2018:</b> 123.456</li>
