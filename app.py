@@ -76,14 +76,7 @@ def mapa():
                     name="Glaciares",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"],
-                    aliases = ['Q1 sin nieve:', 'Q2 sin nieve:']),
-                    popup="Soy un popup",
-                     style_function = lambda feature: {
-                        'fillOpacity': 0.5,
-                        'weight': 0.5,
-                        'color': "#8b0000",
-                        'fillColor': "#d4d4d4"
-                    }
+                    aliases = ['Q1 sin nieve:', 'Q2 sin nieve:'])
                     ).add_to(m)
 
     popup = _popup
