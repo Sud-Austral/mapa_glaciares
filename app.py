@@ -39,9 +39,10 @@ def mapa():
         <style>
             *{
                 font-family: Arial, Tahoma;
+                font-size: 12px;
             }
             
-            ul li{
+            div ul li{
                 text-decoration: none;
             }
 
@@ -61,7 +62,7 @@ def mapa():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=250, height=180)
+    iframe = folium.IFrame(html=html, width=350, height=250)
     _popup = folium.Popup(iframe, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
