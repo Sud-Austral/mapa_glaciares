@@ -37,7 +37,7 @@ def mapa():
     folium.GeoJson(datosGlaciar, 
                     name="Glaciares",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
-                    tooltip=output_dict
+                    tooltip=salida
                     ).add_to(m)
 
     folium.LayerControl().add_to(m)
