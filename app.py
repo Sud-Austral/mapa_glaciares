@@ -34,7 +34,21 @@ def mapa():
         
         )
     
-    geojson =folium.GeoJson(json.dumps(salida), 
+    html="""
+        <div>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    """
+    
+    iframe = folium.IFrame(html=html, width=450, height=300)
+
+    geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"],
