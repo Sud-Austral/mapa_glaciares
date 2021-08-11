@@ -13,7 +13,7 @@ def mapa():
 
     try:
         id = request.args.get("id")
-        id = id
+        id = int(id)
     except:
         id = 1
     
@@ -24,7 +24,7 @@ def mapa():
     datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac.json"
 
     input_dict = json.loads(requests.get(datosGlaciar).content)
-    output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == 56]
+    output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
 
     salida = {'type:':'FeatureCollection','features':output_dict}
     
