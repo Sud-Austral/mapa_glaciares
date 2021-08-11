@@ -24,7 +24,7 @@ def mapa():
     datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac.json"
 
     input_dict = json.loads(requests.get(datosGlaciar).content)
-    output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
+    output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == 2]
 
     salida = {'type:':'FeatureCollection','features':output_dict}
     
@@ -37,7 +37,7 @@ def mapa():
     folium.GeoJson(datosGlaciar, 
                     name="Glaciares",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
-                    tooltip=input_dict
+                    tooltip=output_dict
                     ).add_to(m)
 
     folium.LayerControl().add_to(m)
