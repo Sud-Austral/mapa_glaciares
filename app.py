@@ -45,8 +45,9 @@ def mapa():
             </ul>
         </div>
     """
-    
+
     iframe = folium.IFrame(html=html, width=450, height=300)
+    _popup = folium.Popup(iframe, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares",
@@ -56,7 +57,7 @@ def mapa():
                     popup="Soy un popup",
                     ).add_to(m)
 
-    popup = folium.Popup('Hi')
+    popup = _popup
     popup.add_to(geojson)
 
     folium.LayerControl().add_to(m)
