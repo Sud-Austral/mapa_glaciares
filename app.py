@@ -17,6 +17,11 @@ def mapa():
     except:
         id = 1
     
+    datos = "http://ide.dataintelligence-group.com/mapasdi/temperatura/13101.csv"
+    df = pd.read_csv(datos)
+
+    df = df[df["idZonGlac"] == id]
+
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json/"
     )
