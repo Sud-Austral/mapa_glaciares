@@ -43,7 +43,7 @@ def mapa():
             }
             
             li{
-                text-decoration: none;
+                list-style:none;
             }
 
         </style>
@@ -62,7 +62,7 @@ def mapa():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=350, height=250)
+    iframe = folium.IFrame(html=html, width=300, height=200)
     _popup = folium.Popup(iframe, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
