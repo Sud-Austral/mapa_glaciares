@@ -72,12 +72,15 @@ def mapa():
     iframe = folium.IFrame(html=html, width=250, height=210)
     _popup = folium.Popup(iframe, max_width=2650)
 
+    border_style = {'color': '#000000', 'weight': '1.5', 'fillColor': '#58b5d1', 'fillOpacity': 0.08}
+    
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"],
                     aliases = ['Q1 sin nieve:', 'Q2 sin nieve:']),
                     popup="Soy un popup",
+                    style_function= lambda x: border_style
                     ).add_to(m)
 
     popup = _popup
