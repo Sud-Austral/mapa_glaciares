@@ -1,34 +1,21 @@
-from os import stat
 from flask import Flask
-import folium
-import folium.plugins as plugins
-import numpy as np
-import pandas as pd
 from flask import request
-from datetime import datetime, timedelta
-from folium.plugins import FloatImage
-from folium.plugins import Draw
-from folium.plugins import MiniMap
-import random
-import requests
-import geopandas
+import pandas as pd
+import folium
 import json
 import requests
-import geopandas as gpd
-from shapely.geometry import shape
-import branca.colormap as cm
-from branca.element import Template, MacroElement
+from folium.plugins import HeatMapWithTime
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def mapa():
 
     codigo = request.args.get("codigo")
     codigo = str(codigo)
     
     url = (
-        "https://github.com/Sud-Austral/mapa_glaciares/blob/main/json/"
+        "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json/"
     )
 
     datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac.json"
