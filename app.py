@@ -11,14 +11,22 @@ app = Flask(__name__)
 @app.route('/')
 def mapa():
 
-    codigo = request.args.get("codigo")
-    codigo = str(codigo)
+    try:
+        id = request.args.get("id")
+        id = id
+    except:
+        id = 1
     
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json/"
     )
 
     datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac.json"
+
+    input_dict = json.loads(requests.get(datosGlaciar).content)
+    output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
+
+    salida = {'type:':'FeatureCollection','features':output_dict}
     
     m = folium.Map(
         location=[-33.48621795345005, -70.66557950912359],
@@ -26,9 +34,9 @@ def mapa():
         
         )
     
-    folium.GeoJson(datosGlaciar, 
+    folium.GeoJson(json.dumps(salida), 
                     name="Glaciares",
-                    tooltip=folium.GeoJsonTooltip(fields=["idZonGlac", "SUM_Shape_"])
+                    tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     ).add_to(m)
 
     folium.LayerControl().add_to(m)
