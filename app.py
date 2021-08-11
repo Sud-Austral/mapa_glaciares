@@ -74,9 +74,10 @@ def mapa():
 
     style_function = {'fillColor': '#00FFFFFF',
                  'lineColor': '#00FFFFFF'}
-                 
+
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares",
+                    style_function=style_function,
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"],
                     aliases = ['Q1 sin nieve:', 'Q2 sin nieve:'])
