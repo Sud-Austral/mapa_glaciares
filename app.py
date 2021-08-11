@@ -39,10 +39,10 @@ def mapa():
         <style>
             *{
                 font-family: Arial, Tahoma;
-                font-size: 12px;
+                font-size: 13px;
             }
             
-            div ul li{
+            li{
                 text-decoration: none;
             }
 
