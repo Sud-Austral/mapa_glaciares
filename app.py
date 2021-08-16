@@ -110,6 +110,14 @@ def mapaPeriodo():
     else:
         q = "Inválido"
 
+    if (str(periodo) == "17-18" and str(q) == "Q1"):
+        sn = "SN_1718q1"
+        g = "G_1718q1"
+        p = "P_1718q1"
+        sc = "SC_1718q1"
+
+    else:
+        pass
 
     datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
     df = pd.read_csv(datos)
@@ -156,12 +164,11 @@ def mapaPeriodo():
                 <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
-                <li><b>Q1 Mínima:</b> """ + str(q) + """</li>
-                <li><b>Q1 Mínima:</b> """ + str(df["q1_Min"][indx]) + """</li>
-                <li><b>Q1 Máxima:</b> """ + str(df["q1_Max"][indx]) + """</li>
-                <br>
-                <li><b>Q2 Mínima:</b> """ + str(df["q2_Min"][indx]) + """</li>
-                <li><b>Q2 Máxima:</b> """ + str(df["q2_Max"][indx]) + """</li>
+                <li><b>""" + str(q) + """</b></li>
+                <li><b>Q1 Mínima:</b> """ + str(sn) + """</li>
+                <li><b>Q1 Máxima:</b> """ + str(g) + """</li>
+                <li><b>Q2 Mínima:</b> """ + str(p) + """</li>
+                <li><b>Q2 Máxima:</b> """ + str(sc) + """</li>
             </ul>
         </div>
     """
