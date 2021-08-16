@@ -20,7 +20,7 @@ def mapa():
     datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
     df = pd.read_csv(datos)
 
-    df = df[df["idZonGlac"] == id]
+    df = df[df["idZonGlac"] == str(id)]
     indx = df.index[0]
 
     url = (
