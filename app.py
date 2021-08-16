@@ -12,15 +12,15 @@ app = Flask(__name__)
 def mapa():
 
     try:
-        id = request.args.get("cod")
-        id = str(id)
+        id = request.args.get("id")
+        id = int(id)
     except:
         id = 1
     
     datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
     df = pd.read_csv(datos)
 
-    df = df[df["COD_GLA"] == id]
+    df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
     url = (
@@ -30,7 +30,7 @@ def mapa():
     datosGlaciar = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion_30p.json"
 
     input_dict = json.loads(requests.get(datosGlaciar).content)
-    output_dict = [x for x in input_dict['features'] if x['properties']['COD_GLA'] == id]
+    output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
 
     salida = {'type:':'FeatureCollection','features':output_dict}
     
