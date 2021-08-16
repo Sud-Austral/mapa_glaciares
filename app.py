@@ -165,10 +165,10 @@ def mapaPeriodo():
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
                 <li><b>""" + str(q) + """</b></li>
-                <li><b>Q1 Mínima:</b> """ + str(sn) + """</li>
-                <li><b>Q1 Máxima:</b> """ + str(g) + """</li>
-                <li><b>Q2 Mínima:</b> """ + str(p) + """</li>
-                <li><b>Q2 Máxima:</b> """ + str(sc) + """</li>
+                <li><b>Sin nieve:</b> """ + str(df[sn][indx]) + """</li>
+                <li><b>Ganancia:</b> """ + str(df[g][indx]) + """</li>
+                <li><b>Pérdida:</b> """ + str(df[p][indx]) + """</li>
+                <li><b>Sin cambio:</b> """ + str(df[sc][indx]) + """</li>
             </ul>
         </div>
     """
