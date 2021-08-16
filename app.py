@@ -111,10 +111,32 @@ def mapaPeriodo():
         q = "Inválido"
 
     if (str(periodo) == "17-18" and str(q) == "Q1"):
+        per = "Período: 2017 - 2018"
         sn = "SN_1718q1"
         g = "G_1718q1"
         p = "P_1718q1"
         sc = "SC_1718q1"
+
+    elif (str(periodo) == "18-19" and str(q) == "Q1"):
+        per = "Período: 2018 - 2019"
+        sn = "SN_1819q1"
+        g = "G_1819q1"
+        p = "P_1819q1"
+        sc = "SC_1819q1"
+
+    elif (str(periodo) == "19-20" and str(q) == "Q1"):
+        per = "Período: 2019 - 2020"
+        sn = "SN_1920q1"
+        g = "G_1920q1"
+        p = "P_1920q1"
+        sc = "SC_1920q1"
+
+    elif (str(periodo) == "20-21" and str(q) == "Q1"):
+        per = "Período: 2020 - 2021"
+        sn = "SN_2021q1"
+        g = "G_2021q1"
+        p = "P_2021q1"
+        sc = "SC_2021q1"
 
     else:
         pass
@@ -165,6 +187,7 @@ def mapaPeriodo():
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
                 <li><b>""" + str(q) + """</b></li>
+                <li><b>""" + str(per) + """</b></li>
                 <li><b>Sin nieve:</b> """ + str(df[sn][indx]) + """</li>
                 <li><b>Ganancia:</b> """ + str(df[g][indx]) + """</li>
                 <li><b>Pérdida:</b> """ + str(df[p][indx]) + """</li>
