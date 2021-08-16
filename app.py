@@ -78,8 +78,8 @@ def mapa():
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares R10",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
-                    tooltip = folium.GeoJsonTooltip(fields=["REGION", "COMUNA"],
-                    aliases = ['REGIÓN:', 'COMUNA:'])
+                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_GLA"],
+                    aliases = ['GLACIAR: '])
                     ).add_to(m)
 
     popup = _popup
