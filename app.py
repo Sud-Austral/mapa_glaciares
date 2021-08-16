@@ -24,7 +24,7 @@ def mapa():
     indx = df.index[0]
 
     url = (
-        "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json/"
+        "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
 
     datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac_50p.json"
@@ -88,6 +88,7 @@ def mapa():
     folium.LayerControl().add_to(m)
 
     return m._repr_html_()
+
 
 if __name__ == '__main__':
     app.run()
