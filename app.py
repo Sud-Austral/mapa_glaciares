@@ -17,17 +17,17 @@ def mapa():
     except:
         id = 1
     
-    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
+    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
     df = pd.read_csv(datos)
 
-    df = df[df["idZonGlac"] == str(id)]
+    df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
     url = (
-        "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json/"
+        "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
 
-    datosGlaciar = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion_30p.json"
+    datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac_50p.json"
 
     input_dict = json.loads(requests.get(datosGlaciar).content)
     output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
