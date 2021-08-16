@@ -55,10 +55,18 @@ def mapa():
 
         </style>
 
-        <h3>Datos e información</h3>
+        <h3>GLACIARES R10</h3>
         <div>
             <ul>
-                <li><b>Q1 SN:</b> """ + str(df["REGION"][indx]) + """</li>
+                <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
+                <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
+                <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
+                <br>
+                <li><b>Q1 Mínima:</b> """ + str(df["q1_Min"][indx]) + """</li>
+                <li><b>Q1 Máxima:</b> """ + str(df["q1_Max"][indx]) + """</li>
+                <br>
+                <li><b>Q2 Mínima:</b> """ + str(df["q2_Min"][indx]) + """</li>
+                <li><b>Q2 Máxima:</b> """ + str(df["q2_Max"][indx]) + """</li>
             </ul>
         </div>
     """
