@@ -12,25 +12,25 @@ app = Flask(__name__)
 def mapa():
 
     try:
-        id = request.args.get("id")
-        id = int(id)
+        id = request.args.get("cod")
+        id = str(id)
     except:
         id = 1
     
-    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
+    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
     df = pd.read_csv(datos)
 
-    df = df[df["idZonGlac"] == id]
+    df = df[df["COD_GLA"] == id]
     indx = df.index[0]
 
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json/"
     )
 
-    datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac.json"
+    datosGlaciar = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion_30p.json"
 
     input_dict = json.loads(requests.get(datosGlaciar).content)
-    output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
+    output_dict = [x for x in input_dict['features'] if x['properties']['COD_GLA'] == id]
 
     salida = {'type:':'FeatureCollection','features':output_dict}
     
@@ -58,13 +58,7 @@ def mapa():
         <h3>Datos e información</h3>
         <div>
             <ul>
-                <li><b>Q1 SN:</b> """ + str(df["q1_SN"][indx]) + """</li>
-                <li><b>Q1 Mínimo:</b> """ + str(df["q1_Min"][indx]) + """</li>
-                <li><b>Q1 Máximo:</b> """ + str(df["q1_Max"][indx]) + """</li>
-                <li><b>Q1 Sin nieve, 2017 - 2018:</b> """ + str(df["SN_1718q1"][indx]) + """</li>
-                <li><b>Q1 Ganancia, 2017 - 2018:</b> """ + str(df["G_1718q1"][indx]) + """</li>
-                <li><b>Q1 Pérdida, 2017 - 2018:</b> """ + str(df["P_1718q1"][indx]) + """</li>
-                <li><b>Q1 SC, 2017 - 2018:</b> """ + str(df["SC_1718q1"][indx]) + """</li>
+                <li><b>Q1 SN:</b> """ + str(df["REGION"][indx]) + """</li>
             </ul>
         </div>
     """
@@ -74,10 +68,10 @@ def mapa():
 
 
     geojson = folium.GeoJson(json.dumps(salida), 
-                    name="Glaciares",
+                    name="Glaciares R10",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
-                    tooltip = folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"],
-                    aliases = ['Q1 sin nieve:', 'Q2 sin nieve:'])
+                    tooltip = folium.GeoJsonTooltip(fields=["REGION", "COMUNA"],
+                    aliases = ['REGIÓN:', 'COMUNA:'])
                     ).add_to(m)
 
     popup = _popup
