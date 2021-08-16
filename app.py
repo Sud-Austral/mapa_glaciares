@@ -96,9 +96,21 @@ def mapaPeriodo():
     try:
         id = request.args.get("id")
         id = int(id)
+
+        q = request.args.get("q")
+        periodo = request.args.get("p")
+
     except:
         id = 1
     
+    if (str(q) == "Q1"):
+        q = "Q1"
+    elif (str(q) == "Q2"):
+        q = "Q2"
+    else:
+        q = "Inválido"
+
+
     datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
     df = pd.read_csv(datos)
 
@@ -144,6 +156,7 @@ def mapaPeriodo():
                 <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
+                <li><b>Q1 Mínima:</b> """ + str(q) + """</li>
                 <li><b>Q1 Mínima:</b> """ + str(df["q1_Min"][indx]) + """</li>
                 <li><b>Q1 Máxima:</b> """ + str(df["q1_Max"][indx]) + """</li>
                 <br>
