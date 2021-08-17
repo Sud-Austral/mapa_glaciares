@@ -17,7 +17,7 @@ def mapa():
     except:
         id = 1
     
-    datos = "https://github.com/Sud-Austral/mapa_glaciares/blob/main/csv/R10_AREA_Glac_ZONA_glac.csv"
+    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
     df = pd.read_csv(datos)
 
     df = df[df["idZonGlac"] == id]
