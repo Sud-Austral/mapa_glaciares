@@ -34,9 +34,14 @@ def mapa():
 
     salida = {'type:':'FeatureCollection','features':output_dict}
     
+    if (id != ""):
+        ubicacion = [float(df["Y"][indx]), -float(df["X"][indx])]
+    else:
+        ubicacion = [-33.48621795345005, -70.66557950912359]
+
     m = folium.Map(
-        location=[-33.48621795345005, -70.66557950912359],
-        zoom_start=8,
+        location=ubicacion,
+        zoom_start=11,
         
         )
     
