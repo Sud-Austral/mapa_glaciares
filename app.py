@@ -21,7 +21,6 @@ def mapa():
     df = pd.read_csv(datos)
 
     df = df[df["idZonGlac"] == id]
-    indx = df.index[0]
 
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
@@ -59,11 +58,11 @@ def mapa():
         <div>
             <ul>
                 <br>
-                <li><b>Q1 Mínima:</b> """ + str(df["q1_Min"][indx]) + """</li>
-                <li><b>Q1 Máxima:</b> """ + str(df["q1_Max"][indx]) + """</li>
+                <li><b>Q1 Mínima:</b> """ + str(df["q1_Min"]) + """</li>
+                <li><b>Q1 Máxima:</b> """ + str(df["q1_Max"]) + """</li>
                 <br>
-                <li><b>Q2 Mínima:</b> """ + str(df["q2_Min"][indx]) + """</li>
-                <li><b>Q2 Máxima:</b> """ + str(df["q2_Max"][indx]) + """</li>
+                <li><b>Q2 Mínima:</b> """ + str(df["q2_Min"]) + """</li>
+                <li><b>Q2 Máxima:</b> """ + str(df["q2_Max"]) + """</li>
             </ul>
         </div>
     """
