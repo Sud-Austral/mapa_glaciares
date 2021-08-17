@@ -35,7 +35,7 @@ def mapa():
     salida = {'type:':'FeatureCollection','features':output_dict}
     
     if (id != ""):
-        ubicacion = [float(df["X"][indx]), -float(df["Y"][indx])]
+        ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
     else:
         ubicacion = [-33.48621795345005, -70.66557950912359]
 
