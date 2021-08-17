@@ -41,7 +41,7 @@ def mapa():
 
     m = folium.Map(
         location=ubicacion,
-        zoom_start=11,
+        zoom_start=12,
         
         )
     
@@ -164,7 +164,7 @@ def mapaPeriodo():
     else:
         pass
 
-    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
+    datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
     df = pd.read_csv(datos)
 
     df = df[df["idZonGlac"] == id]
@@ -174,15 +174,20 @@ def mapaPeriodo():
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
 
-    datosGlaciar = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion_30p.json"
+    datosGlaciar = f"{url}/R10_AREA_Glac_ZONA_glac.json"
 
     input_dict = json.loads(requests.get(datosGlaciar).content)
     output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
 
     salida = {'type:':'FeatureCollection','features':output_dict}
     
+    if (id != ""):
+        ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
+    else:
+        ubicacion = [-33.48621795345005, -70.66557950912359]
+
     m = folium.Map(
-        location=[-33.48621795345005, -70.66557950912359],
+        location=ubicacion,
         zoom_start=8,
         
         )
@@ -205,9 +210,6 @@ def mapaPeriodo():
         <h3>GLACIARES R10</h3>
         <div>
             <ul>
-                <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
-                <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
-                <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
                 <li><b>""" + str(q) + """</b></li>
                 <li><b>Período:</b> """ + str(per) + """</li>
@@ -226,7 +228,7 @@ def mapaPeriodo():
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares R10",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
-                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_GLA"],
+                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
                     aliases = ['GLACIAR: '])
                     ).add_to(m)
 
