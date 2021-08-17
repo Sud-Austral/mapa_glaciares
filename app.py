@@ -17,7 +17,11 @@ def mapa():
     except:
         id = 1
     
+    datos = "https://github.com/Sud-Austral/mapa_glaciares/blob/main/csv/R10_AREA_Glac_ZONA_glac.csv"
+    df = pd.read_csv(datos)
 
+    df = df[df["idZonGlac"] == id]
+    indx = df.index[0]
 
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
@@ -35,6 +39,37 @@ def mapa():
         zoom_start=8,
         
         )
+    
+    html="""
+
+        <style>
+            *{
+                font-family: Arial, Tahoma;
+                font-size: 13px;
+            }
+            
+            li{
+                list-style:none;
+                margin-left: -40px;
+            }
+
+        </style>
+
+        <h3>GLACIARES R10</h3>
+        <div>
+            <ul>
+                <br>
+                <li><b>Q1 Mínima:</b> """ + str(df["q1_Min"][indx]) + """</li>
+                <li><b>Q1 Máxima:</b> """ + str(df["q1_Max"][indx]) + """</li>
+                <br>
+                <li><b>Q2 Mínima:</b> """ + str(df["q2_Min"][indx]) + """</li>
+                <li><b>Q2 Máxima:</b> """ + str(df["q2_Max"][indx]) + """</li>
+            </ul>
+        </div>
+    """
+
+    iframe = folium.IFrame(html=html, width=250, height=210)
+    _popup = folium.Popup(iframe, max_width=2650)
 
 
     geojson = folium.GeoJson(json.dumps(salida), 
@@ -44,6 +79,8 @@ def mapa():
                     aliases = ['GLACIAR: '])
                     ).add_to(m)
 
+    popup = _popup
+    popup.add_to(geojson)
 
     folium.LayerControl().add_to(m)
 
