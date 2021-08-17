@@ -18,7 +18,7 @@ def mapa():
         id = 1
     
     datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
-    df = pd.read_csv(datos)
+    df = pd.read_csv(datos, sep=";")
 
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
@@ -168,7 +168,7 @@ def mapaPeriodo():
         pass
 
     datos = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_AREA_Glac_ZONA_glac.csv"
-    df = pd.read_csv(datos)
+    df = pd.read_csv(datos, sep=";")
 
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
