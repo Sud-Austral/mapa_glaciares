@@ -73,11 +73,11 @@ def mapa():
                 <li><b>Q2 Mínima:</b> """ + str(df["q2_Min"][indx]) + """</li>
                 <li><b>Q2 Máxima:</b> """ + str(df["q2_Max"][indx]) + """</li>
 
-                <li><b>Q1 Mínima:</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1).replace(',','.')) + """</li>
-                <li><b>Q1 Máxima:</b> """ + str('{:,}'.format(round(df["q1_Max"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q1 Mínima:</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1)) + """</li>
+                <li><b>Q1 Máxima:</b> """ + str('{:,}'.format(round(df["q1_Max"][indx]), 1)) + """</li>
                 <br>
-                <li><b>Q2 Mínima:</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1).replace(',','.')) + """</li>
-                <li><b>Q2 Máxima:</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q2 Mínima:</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1)) + """</li>
+                <li><b>Q2 Máxima:</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1)) + """</li>
             </ul>
         </div>
     """
