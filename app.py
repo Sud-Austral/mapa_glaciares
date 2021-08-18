@@ -81,7 +81,7 @@ def mapa():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=270, height=300)
+    iframe = folium.IFrame(html=html, width=270, height=290)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
@@ -213,6 +213,10 @@ def mapaPeriodo():
                 margin-left: -40px;
             }
 
+            img{
+                width: 50%;
+                height: auto;
+            }
         </style>
 
         <h3>""" + str(df["Nombre_Gla"][indx]) + """</h3>
@@ -229,10 +233,11 @@ def mapaPeriodo():
                 <li><b>Superficie pérdida (ha):</b> """ + str('{:,}'.format(round(df[p][indx]), 1).replace(',','.')) + """</li>
                 <li><b>Superficie sin cambio (ha):</b> """ + str('{:,}'.format(round(df[sc][indx]), 1).replace(',','.')) + """</li>
             </ul>
+            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=270, height=260)
+    iframe = folium.IFrame(html=html, width=270, height=290)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
