@@ -59,7 +59,7 @@ def mapa():
             }
 
             img{
-                width: 10%;
+                width: 30%;
                 height: auto;
             }
         </style>
@@ -77,11 +77,11 @@ def mapa():
                 <li><b>Q2 (May-Dic) Mínima:</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1).replace(',','.')) + """</li>
                 <li><b>Q2 (May-Dic) Máxima:</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1).replace(',','.')) + """</li>
             </ul>
-            <img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/>
+            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=270, height=260)
+    iframe = folium.IFrame(html=html, width=270, height=280)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
