@@ -71,11 +71,11 @@ def mapa():
                 <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
-                <li><b>Q1 (Ene-Abr) Mínima:</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1).replace(',','.')) + """</li>
-                <li><b>Q1 (Ene-Abr) Máxima:</b> """ + str('{:,}'.format(round(df["q1_Max"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q1_Max"][indx]), 1).replace(',','.')) + """</li>
                 <br>
-                <li><b>Q2 (May-Dic) Mínima:</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1).replace(',','.')) + """</li>
-                <li><b>Q2 (May-Dic) Máxima:</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1).replace(',','.')) + """</li>
             </ul>
             <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
         </div>
@@ -114,9 +114,9 @@ def mapaPeriodo():
         id = 1
     
     if (str(q) == "Q1"):
-        q = "Q1"
+        q = "Q1 (Ene-Abr)"
     elif (str(q) == "Q2"):
-        q = "Q2"
+        q = "Q2 (May-Dic)"
     else:
         q = "Inválido"
 
