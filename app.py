@@ -58,6 +58,10 @@ def mapa():
                 margin-left: -40px;
             }
 
+            img{
+                width: 10%;
+                height: auto;
+            }
         </style>
 
         <h3>""" + str(df["Nombre_Gla"][indx]) + """</h3>
