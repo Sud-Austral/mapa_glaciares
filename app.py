@@ -217,12 +217,12 @@ def mapaPeriodo():
                 <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
-                <li><b>""" + str(q) + """</b></li>
+                <li>Época: <b>""" + str(q) + """</b></li>
                 <li><b>Período:</b> """ + str(per) + """</li>
-                <li><b>Sin nieve:</b> """ + str(df[sn][indx]) + """</li>
-                <li><b>Ganancia:</b> """ + str(df[g][indx]) + """</li>
-                <li><b>Pérdida:</b> """ + str(df[p][indx]) + """</li>
-                <li><b>Sin cambio:</b> """ + str(df[sc][indx]) + """</li>
+                <li><b>Superficie sin nieve (ha):</b> """ + str('{:,}'.format(round(df[sn][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Superficie ganancia (ha):</b> """ + str('{:,}'.format(round(df[g][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Superficie pérdida (ha):</b> """ + str('{:,}'.format(round(df[p][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Superficie sin cambio (ha):</b> """ + str('{:,}'.format(round(df[sc][indx]), 1).replace(',','.')) + """</li>
             </ul>
         </div>
     """
