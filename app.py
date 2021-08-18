@@ -76,7 +76,7 @@ def mapa():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=250, height=210)
+    iframe = folium.IFrame(html=html, width=250, height=300)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
@@ -217,7 +217,7 @@ def mapaPeriodo():
                 <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
-                <li>Época: <b>""" + str(q) + """</b></li>
+                <li><b>Época: </b>""" + str(q) + """</li>
                 <li><b>Período:</b> """ + str(per) + """</li>
                 <li><b>Superficie sin nieve (ha):</b> """ + str('{:,}'.format(round(df[sn][indx]), 1).replace(',','.')) + """</li>
                 <li><b>Superficie ganancia (ha):</b> """ + str('{:,}'.format(round(df[g][indx]), 1).replace(',','.')) + """</li>
@@ -227,7 +227,7 @@ def mapaPeriodo():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=250, height=210)
+    iframe = folium.IFrame(html=html, width=250, height=300)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
