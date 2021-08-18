@@ -73,6 +73,7 @@ def mapa():
                 <li><b>Q2 (May-Dic) Mínima:</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1).replace(',','.')) + """</li>
                 <li><b>Q2 (May-Dic) Máxima:</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1).replace(',','.')) + """</li>
             </ul>
+            <img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/>
         </div>
     """
 
