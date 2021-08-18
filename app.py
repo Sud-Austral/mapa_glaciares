@@ -64,7 +64,7 @@ def mapa():
             }
         </style>
 
-        <h3>""" + str(df["Nombre_Gla"][indx]) + """</h3>
+        <h3><center>""" + str(df["Nombre_Gla"][indx]) + """</center></h3>
         <div>
             <ul>
                 <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
@@ -219,7 +219,7 @@ def mapaPeriodo():
             }
         </style>
 
-        <h3>""" + str(df["Nombre_Gla"][indx]) + """</h3>
+        <h3><center>""" + str(df["Nombre_Gla"][indx]) + """</center></h3>
         <div>
             <ul>
                 <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
