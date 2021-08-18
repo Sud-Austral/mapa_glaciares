@@ -81,7 +81,7 @@ def mapa():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=270, height=290)
+    iframe = folium.IFrame(html=html, width=270, height=300)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
@@ -237,7 +237,7 @@ def mapaPeriodo():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=270, height=290)
+    iframe = folium.IFrame(html=html, width=270, height=300)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
