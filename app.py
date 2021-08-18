@@ -109,9 +109,9 @@ def mapaPeriodo():
         id = 1
     
     if (str(q) == "Q1"):
-        q = "Q1"
+        q = "Q1 (Ene-Abr)"
     elif (str(q) == "Q2"):
-        q = "Q2"
+        q = "Q2 (May-Dic)"
     else:
         q = "Inválido"
 
