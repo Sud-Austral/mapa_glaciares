@@ -41,7 +41,7 @@ def mapa():
 
     m = folium.Map(
         location=ubicacion,
-        zoom_start=12,
+        zoom_start=13,
         
         )
     
@@ -196,7 +196,7 @@ def mapaPeriodo():
 
     m = folium.Map(
         location=ubicacion,
-        zoom_start=12,
+        zoom_start=13,
         
         )
     
