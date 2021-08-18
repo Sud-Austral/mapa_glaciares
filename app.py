@@ -114,11 +114,15 @@ def mapaPeriodo():
         id = 1
     
     if (str(q) == "Q1"):
-        q = "Q1, Ene-Abr"
+        q = "Q1"
+        qtext = "Q1 (Ene-Abr)"
     elif (str(q) == "Q2"):
-        q = "Q2, May-Dic"
+        q = "Q2"
+        qtext = "Q2 (May-Dic)"
     else:
         q = "Inválido"
+
+    
 
     if (str(periodo) == "17-18" and str(q) == "Q1"):
         per = "2017 - 2018"
@@ -226,7 +230,7 @@ def mapaPeriodo():
                 <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
-                <li><b>Época: </b>""" + str(q) + """</li>
+                <li><b>Época: </b>""" + str(qtext) + """</li>
                 <li><b>Período:</b> """ + str(per) + """</li>
                 <li><b>Superficie sin nieve (ha):</b> """ + str('{:,}'.format(round(df[sn][indx]), 1).replace(',','.')) + """</li>
                 <li><b>Superficie ganancia (ha):</b> """ + str('{:,}'.format(round(df[g][indx]), 1).replace(',','.')) + """</li>
