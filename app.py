@@ -10,9 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def mapa():
-    idGeo = request.args.get("geo")
-    idGeo = str(idGeo)
-
+   
     try:
         id = request.args.get("id")
         id = int(id)
@@ -110,22 +108,6 @@ def mapa():
 
     popup = _popup
     popup.add_to(geojson)
-
-    # GEOSERVICIOS
-
-    # codComuna = "CQL_FILTER=COMUNA=" + idGeo
-    # geoq11718 = folium.WmsTileLayer(url = 'https://ide.dataintelligence-group.com/geoserver/glaciares_r10/wms?' + codComuna,
-    geoq11718 = folium.WmsTileLayer(url = 'https://ide.dataintelligence-group.com/geoserver/glaciares_r10/wms?',
-                        layers = 'glaciares_r10:1718q1',
-                        fmt ='image/png',
-                        transparent = True,
-                        name = "Glaciares Q1 17-18",
-                        control = True,
-                        attr = "Mapa de Chile"
-                        )
-
-    
-    geoq11718.add_to(m)
 
     folium.LayerControl().add_to(m)
 
@@ -317,7 +299,7 @@ def mapaPeriodo():
 
     
     geoq11718.add_to(m)
-    
+
     folium.LayerControl().add_to(m)
 
     return m._repr_html_()
