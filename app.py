@@ -221,8 +221,14 @@ def mapaPeriodo():
                 width: 50%;
                 height: auto;
             }
+
+            .banner{
+                width: 100%;
+                height: auto;
+            }
         </style>
 
+        <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares_top.jpg" alt="Data Intelligence"/></center>
         <h3><center>""" + str(df["Nombre_Gla"][indx]) + """</center></h3>
         <div>
             <ul>
@@ -237,7 +243,7 @@ def mapaPeriodo():
                 <li><b>Superficie pérdida (ha):</b> """ + str('{:,}'.format(round(df[p][indx]), 1).replace(',','.')) + """</li>
                 <li><b>Superficie sin cambio (ha):</b> """ + str('{:,}'.format(round(df[sc][indx]), 1).replace(',','.')) + """</li>
             </ul>
-            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
+            <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares_bottom.jpg" alt="Data Intelligence"/></center>
         </div>
     """
 
