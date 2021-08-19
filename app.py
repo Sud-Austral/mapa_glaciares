@@ -264,14 +264,7 @@ def mapaPeriodo():
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
                     aliases = ['GLACIAR: ']),
-                    style_function = lambda feature: {
-                                "fillColor": "#53b220"
-                                if feature["properties"]["idZonGlac"] >= 0
-                                else "#f632a3",
-                                "color": "black",
-                                "weight": 2,
-                                "dashArray": "5, 5",
-                            },
+                   
                     ).add_to(m)
 
     popup = _popup
