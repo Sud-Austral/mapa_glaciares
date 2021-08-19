@@ -262,9 +262,9 @@ def mapaPeriodo():
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares R10",
                     style_function = lambda feature: {
-                                "fillColor": "#53b220"
+                                "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
-                                else "#f632a3",
+                                else "transparent",
                                 "color": "black",
                                 "weight": 2,
                                 "dashArray": "5, 5",
