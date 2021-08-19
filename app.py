@@ -32,7 +32,7 @@ def mapa():
     input_dict = json.loads(requests.get(datosGlaciar).content)
     output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
 
-    salida = {'type:':'FeatureCollection','features':output_dict}
+    salida = {'type':'FeatureCollection','features':output_dict}
     
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
@@ -197,7 +197,7 @@ def mapaPeriodo():
     input_dict = json.loads(requests.get(datosGlaciar).content)
     output_dict = [x for x in input_dict['features'] if x['properties']['idZonGlac'] == id]
 
-    salida = {'type:':'FeatureCollection','features':output_dict}
+    salida = {'type':'FeatureCollection','features':output_dict}
     
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
