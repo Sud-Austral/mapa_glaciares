@@ -92,7 +92,7 @@ def mapa():
 
 
     geojson = folium.GeoJson(json.dumps(salida), 
-                    name="Glaciares R10",
+                    name="Glaciar",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
                     aliases = ['GLACIAR: '])
@@ -136,6 +136,8 @@ def mapaPeriodo():
         g = "G_1718q1"
         p = "P_1718q1"
         sc = "SC_1718q1"
+        capa = "glaciares_r10:1718q1 "
+        nombre = "Q1 (Ene-Abr) 2017-2018"
 
     elif (str(periodo) == "18-19" and str(q) == "Q1"):
         per = "P2018 - 2019"
@@ -260,7 +262,7 @@ def mapaPeriodo():
 
 
     geojson = folium.GeoJson(json.dumps(salida), 
-                    name="Glaciares R10",
+                    name="Glaciar",
                     style_function = lambda feature: {
                                 "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
@@ -281,10 +283,10 @@ def mapaPeriodo():
     # codComuna = "CQL_FILTER=COMUNA=" + idGeo
     # geoq11718 = folium.WmsTileLayer(url = 'https://ide.dataintelligence-group.com/geoserver/glaciares_r10/wms?' + codComuna,
     geoq11718 = folium.WmsTileLayer(url = 'https://ide.dataintelligence-group.com/geoserver/glaciares_r10/wms?',
-                        layers = 'glaciares_r10:1718q1',
+                        layers = capa,
                         fmt ='image/png',
                         transparent = True,
-                        name = "Glaciares Q1 17-18",
+                        name = nombre,
                         control = True,
                         attr = "Mapa de Chile"
                         )
