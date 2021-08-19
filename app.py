@@ -69,6 +69,7 @@ def mapa():
             }
         </style>
         <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
+        <br>
         <h3><center>""" + str(df["Nombre_Gla"][indx]) + """</center></h3>
         <div>
             <ul>
@@ -86,7 +87,7 @@ def mapa():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=290, height=320)
+    iframe = folium.IFrame(html=html, width=290, height=350)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
@@ -252,7 +253,7 @@ def mapaPeriodo():
         </div>
     """
 
-    iframe = folium.IFrame(html=html, width=290, height=350)
+    iframe = folium.IFrame(html=html, width=280, height=350)
     _popup = folium.Popup(iframe, max_width=2650)
 
 
