@@ -265,7 +265,7 @@ def mapaPeriodo():
                                 "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
                                 else "transparent",
-                                "color": "black",
+                                "color": "#b6ff00",
                                 "weight": 2,
                                 "dashArray": "5, 5",
                             },
