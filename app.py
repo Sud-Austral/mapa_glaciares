@@ -112,8 +112,8 @@ def mapa():
 
     geojson_div = folium.GeoJson(json.dumps(salida_div), 
                     name="Glaciar (subdisivión)",
-                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_GLA"],
-                    aliases = ['GLACIAR: '])
+                    tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
+                    aliases = ['SUBCUENCA: '])
                     ).add_to(m)
 
     folium.LayerControl().add_to(m)
