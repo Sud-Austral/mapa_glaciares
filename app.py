@@ -228,6 +228,15 @@ def mapaPeriodo():
 
     salida = {'type':'FeatureCollection','features':output_dict}
     
+    # JSON Glaciar divisiones
+
+    glaciarDivisiones = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion.json"
+
+    input_dict_div = json.loads(requests.get(glaciarDivisiones).content)
+    output_dict_div = [x for x in input_dict_div['features'] if x['properties']['idZonGlac'] == id]
+
+    salida_div = {'type':'FeatureCollection','features':output_dict_div}
+    
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
     else:
@@ -304,6 +313,12 @@ def mapaPeriodo():
 
     popup = _popup
     popup.add_to(geojson)
+
+    geojson_div = folium.GeoJson(json.dumps(salida_div), 
+                    name="Glaciar (subdisivión)",
+                    tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
+                    aliases = ['SUBCUENCA: '])
+                    ).add_to(m)
 
     # GEOSERVICIOS
 
