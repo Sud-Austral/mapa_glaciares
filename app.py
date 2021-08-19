@@ -320,9 +320,8 @@ def mapaPeriodo():
                                 "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
                                 else "transparent",
-                                "color": "#3a890f",
+                                "color": "#edff37",
                                 "weight": 3,
-                                "dashArray": "5, 5",
                             },
                     tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
                     aliases = ['SUBCUENCA: '])
