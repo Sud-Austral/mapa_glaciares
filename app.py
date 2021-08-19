@@ -266,7 +266,7 @@ def mapaPeriodo():
                     aliases = ['GLACIAR: ']),
                     style_function = lambda feature: {
                                 "fillColor": "#53b220"
-                                if feature["properties"]["IZ_ZON_LOC"] > 0
+                                if feature["properties"]["idZonGlac"] != ""
                                 else "#f632a3",
                                 "color": "black",
                                 "weight": 2,
