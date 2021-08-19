@@ -93,6 +93,14 @@ def mapa():
 
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciares R10",
+                    style_function = lambda feature: {
+                                "fillColor": "transparent"
+                                if feature["properties"]["idZonGlac"] > 0
+                                else "transparent",
+                                "color": "black",
+                                "weight": 2,
+                                "dashArray": "5, 5",
+                            },
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
                     aliases = ['GLACIAR: '])
