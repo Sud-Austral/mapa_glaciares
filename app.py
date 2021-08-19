@@ -99,7 +99,7 @@ def mapa():
                                 "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
                                 else "transparent",
-                                "color": "#7bff00",
+                                "color": "#b2ff00",
                                 "weight": 3,
                                 "dashArray": "5, 5",
                             },
