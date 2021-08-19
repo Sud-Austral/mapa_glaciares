@@ -236,7 +236,7 @@ def mapaPeriodo():
     output_dict_div = [x for x in input_dict_div['features'] if x['properties']['idZonGlac'] == id]
 
     salida_div = {'type':'FeatureCollection','features':output_dict_div}
-    
+
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
     else:
@@ -316,6 +316,14 @@ def mapaPeriodo():
 
     geojson_div = folium.GeoJson(json.dumps(salida_div), 
                     name="Glaciar (subdisivión)",
+                    style_function = lambda feature: {
+                                "fillColor": "transparent"
+                                if feature["properties"]["idZonGlac"] > 0
+                                else "transparent",
+                                "color": "#b2ff00",
+                                "weight": 3,
+                                "dashArray": "5, 5",
+                            },
                     tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
                     aliases = ['SUBCUENCA: '])
                     ).add_to(m)
