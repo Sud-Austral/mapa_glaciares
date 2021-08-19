@@ -136,7 +136,7 @@ def mapaPeriodo():
         g = "G_1718q1"
         p = "P_1718q1"
         sc = "SC_1718q1"
-        capa = "glaciares_r10:1718q1 "
+        capa = "glaciares_r10:1718q1"
         nombre = "Q1 (Ene-Abr) 2017-2018"
 
     elif (str(periodo) == "18-19" and str(q) == "Q1"):
@@ -145,6 +145,8 @@ def mapaPeriodo():
         g = "G_1819q1"
         p = "P_1819q1"
         sc = "SC_1819q1"
+        capa = "glaciares_r10:1819q1"
+        nombre = "Q1 (Ene-Abr) 2018-2019"
 
     elif (str(periodo) == "19-20" and str(q) == "Q1"):
         per = "2019 - 2020"
@@ -152,6 +154,8 @@ def mapaPeriodo():
         g = "G_1920q1"
         p = "P_1920q1"
         sc = "SC_1920q1"
+        capa = "glaciares_r10:1920q1"
+        nombre = "Q1 (Ene-Abr) 2019-2020"
 
     elif (str(periodo) == "20-21" and str(q) == "Q1"):
         per = "2020 - 2021"
@@ -159,6 +163,8 @@ def mapaPeriodo():
         g = "G_2021q1"
         p = "P_2021q1"
         sc = "SC_2021q1"
+        capa = "glaciares_r10:2021q1"
+        nombre = "Q1 (Ene-Abr) 2020-2021"
 
     elif (str(periodo) == "17-18" and str(q) == "Q2"):
         per = "2017 - 2018"
@@ -166,6 +172,8 @@ def mapaPeriodo():
         g = "G_1718q2"
         p = "P_1718q2"
         sc = "SC_1718q2"
+        capa = "glaciares_r10:1718q2"
+        nombre = "Q2 (May-Dic) 2017-2018"
 
     elif (str(periodo) == "18-19" and str(q) == "Q2"):
         per = "2018 - 2019"
@@ -173,6 +181,8 @@ def mapaPeriodo():
         g = "G_1819q2"
         p = "P_1819q2"
         sc = "SC_1819q2"
+        capa = "glaciares_r10:1819q2"
+        nombre = "Q2 (May-Dic) 2018-2019"
 
     elif (str(periodo) == "19-20" and str(q) == "Q2"):
         per = "2019 - 2020"
@@ -180,6 +190,8 @@ def mapaPeriodo():
         g = "G_1920q2"
         p = "P_1920q2"
         sc = "SC_1920q2"
+        capa = "glaciares_r10:1920q2"
+        nombre = "Q2 (May-Dic) 2020-2021"
 
     else:
         pass
