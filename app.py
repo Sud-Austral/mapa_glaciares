@@ -100,7 +100,7 @@ def mapa():
                                 if feature["properties"]["idZonGlac"] > 0
                                 else "transparent",
                                 "color": "#7bff00",
-                                "weight": 2,
+                                "weight": 3,
                                 "dashArray": "5, 5",
                             },
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
