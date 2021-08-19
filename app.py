@@ -113,18 +113,19 @@ def mapa():
 
     # GEOSERVICIOS
 
-    codComuna = "CQL_FILTER=COMUNA=" + idGeo
-    w1 = folium.WmsTileLayer(url = 'https://ide.dataintelligence-group.com/geoserver/glaciares/wms?' + codComuna,
-                        layers = 'glaciares:R14_BaseZonGlaciares_2017_2021q1',
+    # codComuna = "CQL_FILTER=COMUNA=" + idGeo
+    # geoq11718 = folium.WmsTileLayer(url = 'https://ide.dataintelligence-group.com/geoserver/glaciares_r10/wms?' + codComuna,
+    geoq11718 = folium.WmsTileLayer(url = 'https://ide.dataintelligence-group.com/geoserver/glaciares_r10/wms?',
+                        layers = 'glaciares_r10:1718q1',
                         fmt ='image/png',
                         transparent = True,
-                        name = "Glaciares 2",
+                        name = "Glaciares Q1 17-18",
                         control = True,
                         attr = "Mapa de Chile"
                         )
 
     
-    w1.add_to(m)
+    geoq11718.add_to(m)
 
     folium.LayerControl().add_to(m)
 
