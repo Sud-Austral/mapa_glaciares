@@ -133,6 +133,9 @@ def mapa():
                 <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
+                <li><b>Código de glaciar:</b> """ + str('{:,}'.format(round(df["COD_GLA"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>SUBSUBCUENCA:</b> """ + str('{:,}'.format(round(df["NOM_SSUBC"][indx]), 1).replace(',','.')) + """</li>
+                <br>
                 <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1).replace(',','.')) + """</li>
                 <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q1_Max"][indx]), 1).replace(',','.')) + """</li>
                 <br>
@@ -143,7 +146,7 @@ def mapa():
         </div>
     """
 
-    iframe_div = folium.IFrame(html=html_div, width=290, height=350)
+    iframe_div = folium.IFrame(html=html_div, width=290, height=340)
     _popup_div = folium.Popup(iframe_div, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
