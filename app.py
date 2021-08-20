@@ -211,13 +211,11 @@ def mapa():
         style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
         border-radius:6px; padding: 10px; font-size:14px; right: 20px; bottom: 20px;'>
         
-    <div class='legend-title'>Temperatura</div>
+    <div class='legend-title'><b>GLACIARES:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</div>
     <div class='legend-scale'>
     <ul class='legend-labels'>
-        <li><span style='background:#ffbd48;opacity:0.7;'></span>20° - 30°</li>
-        <li><span style='background:#ff8548;opacity:0.7;'></span>31° -35°</li>
-        <li><span style='background:#ff4848;opacity:0.7;'></span>36° - 40°</li>
-
+        <li><span style='background:#f78820;opacity:0.7;'></span>PÉRDIDA</li>
+        <li><span style='background:#2099f7;opacity:0.7;'></span>GANANCIA</li>
     </ul>
     </div>
     </div>
