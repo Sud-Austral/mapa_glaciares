@@ -23,6 +23,12 @@ def mapa():
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
+    datosDiv = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
+    dfDiv = pd.read_csv(datosDiv, sep=";")
+
+    dfDiv = dfDiv[dfDiv["idZonGlac"] == id]
+    indxDiv = dfDiv.index[0]
+
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
@@ -126,21 +132,21 @@ def mapa():
         </style>
         <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
         <br>
-        <h3><center>""" + str(df["Nombre_Gla"][indx]) + """</center></h3>
+        <h3><center>""" + str(df["Nombre_Gla"][indxDiv]) + """</center></h3>
         <div>
             <ul>
-                <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
-                <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
-                <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
+                <li><b>REGIÓN:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</li>
+                <li><b>PROVINCIA</b> """ + str(dfDiv["NOM_PROVIN"][indxDiv]) + """</li>
+                <li><b>COMUNA:</b> """ + str(dfDiv["NOM_COMUNA"][indxDiv]) + """</li>
                 <br>
-                <li><b>Código de glaciar:</b> """ + str('{:,}'.format(round(df["COD_GLA"][indx]), 1).replace(',','.')) + """</li>
-                <li><b>SUBSUBCUENCA:</b> """ + str('{:,}'.format(round(df["NOM_SSUBC"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Código de glaciar:</b> """ + str('{:,}'.format(round(dfDiv["COD_GLA"][indxDiv]), 1).replace(',','.')) + """</li>
+                <li><b>SUBSUBCUENCA:</b> """ + str('{:,}'.format(round(dfDiv["NOM_SSUBC"][indxDiv]), 1).replace(',','.')) + """</li>
                 <br>
-                <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1).replace(',','.')) + """</li>
-                <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q1_Max"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q1_Min"][indxDiv]), 1).replace(',','.')) + """</li>
+                <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q1_Max"][indxDiv]), 1).replace(',','.')) + """</li>
                 <br>
-                <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1).replace(',','.')) + """</li>
-                <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q2_Min"][indxDiv]), 1).replace(',','.')) + """</li>
+                <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q2_Max"][indxDiv]), 1).replace(',','.')) + """</li>
             </ul>
             <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
         </div>
