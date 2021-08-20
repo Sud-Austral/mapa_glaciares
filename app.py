@@ -24,12 +24,6 @@ def mapa():
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
-    datosDiv = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
-    dfDiv = pd.read_csv(datosDiv, sep=",")
-
-    dfDiv = dfDiv[dfDiv["idZonGlac"] == id]
-    indxDiv = dfDiv.index[0]
-
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
@@ -106,56 +100,6 @@ def mapa():
     iframe = folium.IFrame(html=html, width=290, height=350)
     _popup = folium.Popup(iframe, max_width=2650)
 
-    # POPUP PARA SUBDIVISIONES
-
-    html_div="""
-
-        <style>
-            *{
-                font-family: Arial, Tahoma;
-                font-size: 13px;
-            }
-            
-            li{
-                list-style:none;
-                margin-left: -40px;
-            }
-
-            img{
-                width: 70%;
-                height: auto;
-            }
-
-            .banner{
-                width: 100%;
-                height: auto;
-            }
-        </style>
-        <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
-        <br>
-        <h3><center>""" + str(dfDiv["Nombre_GLA"][indxDiv]) + """</center></h3>
-        <div>
-            <ul>
-                <li><b>REGIÓN:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</li>
-                <li><b>PROVINCIA</b> """ + str(dfDiv["NOM_PROVIN"][indxDiv]) + """</li>
-                <li><b>COMUNA:</b> """ + str(dfDiv["NOM_COMUNA"][indxDiv]) + """</li>
-                <br>
-                <li><b>Código de glaciar:</b> """ + str(dfDiv["COD_GLA"][indxDiv]) + """</li>
-                <li><b>SUBSUBCUENCA:</b> """ + str(dfDiv["NOM_SSUBC"][indxDiv]) + """</li>
-                <br>
-                <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q1_Min"][indxDiv]), 1).replace(',','.')) + """</li>
-                <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q1_Max"][indxDiv]), 1).replace(',','.')) + """</li>
-                <br>
-                <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q2_Min"][indxDiv]), 1).replace(',','.')) + """</li>
-                <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q2_Max"][indxDiv]), 1).replace(',','.')) + """</li>
-            </ul>
-            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
-        </div>
-    """
-
-    iframe_div = folium.IFrame(html=html_div, width=290, height=400)
-    _popup_div = folium.Popup(iframe_div, max_width=2650)
-
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Glaciar",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
@@ -165,15 +109,6 @@ def mapa():
 
     popup = _popup
     popup.add_to(geojson)
-
-    geojson_div = folium.GeoJson(json.dumps(salida_div), 
-                    name="Glaciar (subdisivión)",
-                    tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
-                    aliases = ['SUBCUENCA: '])
-                    ).add_to(m)
-
-    popup_div = _popup_div
-    popup_div.add_to(geojson_div)
 
     folium.LayerControl().add_to(m)
 
@@ -557,7 +492,7 @@ def mapaPeriodo():
     macro._template = Template(template)
 
     m.get_root().add_child(macro)
-    
+
     return m._repr_html_()
 
 if __name__ == '__main__':
