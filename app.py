@@ -24,6 +24,13 @@ def mapa():
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
+    datosDiv = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
+    dfDiv = pd.read_csv(datosDiv, sep=",")
+
+    dfSubc = dfDiv[dfDiv["idZonGlac"] == id]
+    divi = dfSubc["Id_Union"].unique().tolist()
+    divi
+
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
@@ -109,6 +116,150 @@ def mapa():
 
     popup = _popup
     popup.add_to(geojson)
+
+    for i in divi:
+    
+        cut = i
+        # print(cut)
+        
+        df = pd.read_csv(datosDiv)
+
+        df = df[df["Id_Union"] == cut]
+        indx = df.index[0]
+
+        output_dict = [x for x in input_dict['features'] if x['properties']['Id_Union'] == str(cut)]
+
+        salida = {'type':'FeatureCollection','features':output_dict}
+
+        html="""
+
+            <style>
+                *{
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 13px;
+                }
+
+                .contenedor0{
+                    /* background-color: #c4732c; */
+                    width: 100%;
+                    height: 6%;
+                    float: left;
+                    text-align: center;
+                    margin: 5px;
+                    font-size: 14px;
+                }
+
+                .contenedor1{
+                    /* background-color: #FF7800; */
+                    width: 30%;
+                    height: 52%;
+                    float: left;
+                    padding: 8px;
+                    box-sizing: border-box;
+                }
+
+                .contenedor2{
+                    /* background-color: #FF2500; */
+                    width: 70%;
+                    height: 52%;
+                    float: left;
+                    padding: 8px;
+                    box-sizing: border-box;
+                }
+
+                .contenedor3{
+                    /* background-color: #F89610; */
+                    width: 30%;
+                    height: 38%;
+                    float: left;
+                    padding: 8px;
+                    box-sizing: border-box;
+                    text-align: center;
+                }
+
+                .contenedor4{
+                    /* background-color: #FFF000; */
+                    width: 70%;
+                    height: 38%;
+                    float: left;
+                    padding: 8px;
+                    box-sizing: border-box;
+                }
+
+                .container{
+                    width: 100%;
+                    height: 100%;
+                    /* border: 2px dashed black; */
+                }
+
+                ul{
+                    margin-top: -10px;
+                }
+
+                li{
+                    list-style:none;
+                    margin-left: -50px;
+                }
+
+                .contenedor4 li{
+                    list-style:none;
+                    margin-left: -40px;
+                }
+
+                .escudo{
+                    width: auto;
+                    height: 100%;
+                }
+
+                .ubicacion{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 4px;
+                }
+                
+                .background{
+                    background-color: #d2d2d2;
+                }
+
+                .logoPopup{
+                    width: 40%
+                }
+            </style>
+
+            <div class="container">
+                <div class="contenedor0">
+                    <p><b>DATOS</b></p>
+                </div>
+                <div class="contenedor1">
+                    <ul>
+                        <li><h3>INFORMACIÓN GENERAL</h3></li>
+                        <li><b>REGIÓN:</b><br>""" + str(df["NOM_REGION"][indx]) + """</li>
+                        <li><b>COMUNA:</b><br>""" + str(df["NOM_COMUNA"][indx]) + """</li>
+                        <li><b>HOMBRES:</b><br>""" + str('{:,}'.format(df["q2_Max"][indx]).replace(',','.')) + """</li>
+                    </ul>
+                </div>
+
+                <div class="contenedor2">
+                    <img src="https://github.com/hectorflores329/heroku/raw/main/santiago.png" alt="Ubicación geográfica" class="ubicacion"/>
+                </div>
+
+                <div>
+                    <center><img class="logoPopup" src="https://github.com/hectorflores329/heroku/raw/main/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
+                </div>
+            </div>
+
+        """
+
+        iframe = folium.IFrame(html=html, width=600, height=680)
+        _popup = folium.Popup(iframe, max_width=2650)
+
+        geojson = folium.GeoJson(json.dumps(salida), 
+                        name="Censo",
+                        tooltip = "<b>Comuna: </b>" + str(df["COMUNA"][indx]),
+                        ).add_to(m)
+
+        popup = _popup
+        popup.add_to(geojson)
 
     folium.LayerControl().add_to(m)
 
