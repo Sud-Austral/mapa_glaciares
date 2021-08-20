@@ -139,8 +139,8 @@ def mapa():
                 <li><b>PROVINCIA</b> """ + str(dfDiv["NOM_PROVIN"][indxDiv]) + """</li>
                 <li><b>COMUNA:</b> """ + str(dfDiv["NOM_COMUNA"][indxDiv]) + """</li>
                 <br>
-                <li><b>Código de glaciar:</b> """ + str('{:,}'.format(round(dfDiv["COD_GLA"][indxDiv]), 1).replace(',','.')) + """</li>
-                <li><b>SUBSUBCUENCA:</b> """ + str('{:,}'.format(round(dfDiv["NOM_SSUBC"][indxDiv]), 1).replace(',','.')) + """</li>
+                <li><b>Código de glaciar:</b> """ + str(dfDiv["COD_GLA"][indxDiv]) + """</li>
+                <li><b>SUBSUBCUENCA:</b> """ + str(dfDiv["NOM_SSUBC"][indxDiv]) + """</li>
                 <br>
                 <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q1_Min"][indxDiv]), 1).replace(',','.')) + """</li>
                 <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(dfDiv["q1_Max"][indxDiv]), 1).replace(',','.')) + """</li>
