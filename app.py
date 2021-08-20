@@ -24,7 +24,7 @@ def mapa():
     indx = df.index[0]
 
     datosDiv = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
-    dfDiv = pd.read_csv(datosDiv, sep=";")
+    dfDiv = pd.read_csv(datosDiv, sep=",")
 
     dfDiv = dfDiv[dfDiv["idZonGlac"] == id]
     indxDiv = dfDiv.index[0]
