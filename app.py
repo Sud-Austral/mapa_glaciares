@@ -125,7 +125,7 @@ def mapa():
         df = pd.read_csv(datosDiv)
 
         df = df[df["Id_Union"] == _cut]
-        indx = df.index[0]
+        indx_ = df.index[0]
 
         output_dict_ = [x for x in input_dict_div['features'] if x['properties']['Id_Union'] == str(_cut)]
 
@@ -137,9 +137,9 @@ def mapa():
                 <div class="contenedor1">
                     <ul>
                         <li><h3>INFORMACIÓN GENERAL</h3></li>
-                        <li><b>REGIÓN:</b><br>""" + str(df["NOM_REGION"][indx]) + """</li>
-                        <li><b>COMUNA:</b><br>""" + str(df["NOM_COMUNA"][indx]) + """</li>
-                        <li><b>HOMBRES:</b><br>""" + str(df["q2_Max"][indx]) + """</li>
+                        <li><b>REGIÓN:</b><br>""" + str(df["NOM_REGION"][indx_]) + """</li>
+                        <li><b>COMUNA:</b><br>""" + str(df["NOM_COMUNA"][indx_]) + """</li>
+                        <li><b>HOMBRES:</b><br>""" + str(df["q2_Max"][indx_]) + """</li>
                     </ul>
                 </div>
 
