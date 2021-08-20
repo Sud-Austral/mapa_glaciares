@@ -142,19 +142,11 @@ def mapa():
                         <li><b>HOMBRES:</b><br>""" + str(df["q2_Max"][indx_]) + """</li>
                     </ul>
                 </div>
-
-                <div class="contenedor2">
-                    <img src="https://github.com/hectorflores329/heroku/raw/main/santiago.png" alt="Ubicación geográfica" class="ubicacion"/>
-                </div>
-
-                <div>
-                    <center><img class="logoPopup" src="https://github.com/hectorflores329/heroku/raw/main/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
-                </div>
             </div>
 
         """
 
-        iframe = folium.IFrame(html=html, width=600, height=680)
+        iframe = folium.IFrame(html=html, width=400, height=480)
         _popup = folium.Popup(iframe, max_width=2650)
 
         geojson = folium.GeoJson(json.dumps(salida_), 
