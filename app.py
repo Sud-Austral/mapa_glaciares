@@ -133,109 +133,13 @@ def mapa():
 
         html="""
 
-            <style>
-                *{
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 13px;
-                }
-
-                .contenedor0{
-                    /* background-color: #c4732c; */
-                    width: 100%;
-                    height: 6%;
-                    float: left;
-                    text-align: center;
-                    margin: 5px;
-                    font-size: 14px;
-                }
-
-                .contenedor1{
-                    /* background-color: #FF7800; */
-                    width: 30%;
-                    height: 52%;
-                    float: left;
-                    padding: 8px;
-                    box-sizing: border-box;
-                }
-
-                .contenedor2{
-                    /* background-color: #FF2500; */
-                    width: 70%;
-                    height: 52%;
-                    float: left;
-                    padding: 8px;
-                    box-sizing: border-box;
-                }
-
-                .contenedor3{
-                    /* background-color: #F89610; */
-                    width: 30%;
-                    height: 38%;
-                    float: left;
-                    padding: 8px;
-                    box-sizing: border-box;
-                    text-align: center;
-                }
-
-                .contenedor4{
-                    /* background-color: #FFF000; */
-                    width: 70%;
-                    height: 38%;
-                    float: left;
-                    padding: 8px;
-                    box-sizing: border-box;
-                }
-
-                .container{
-                    width: 100%;
-                    height: 100%;
-                    /* border: 2px dashed black; */
-                }
-
-                ul{
-                    margin-top: -10px;
-                }
-
-                li{
-                    list-style:none;
-                    margin-left: -50px;
-                }
-
-                .contenedor4 li{
-                    list-style:none;
-                    margin-left: -40px;
-                }
-
-                .escudo{
-                    width: auto;
-                    height: 100%;
-                }
-
-                .ubicacion{
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 4px;
-                }
-                
-                .background{
-                    background-color: #d2d2d2;
-                }
-
-                .logoPopup{
-                    width: 40%
-                }
-            </style>
-
             <div class="container">
-                <div class="contenedor0">
-                    <p><b>DATOS</b></p>
-                </div>
                 <div class="contenedor1">
                     <ul>
                         <li><h3>INFORMACIÓN GENERAL</h3></li>
                         <li><b>REGIÓN:</b><br>""" + str(df["NOM_REGION"][indx]) + """</li>
                         <li><b>COMUNA:</b><br>""" + str(df["NOM_COMUNA"][indx]) + """</li>
-                        <li><b>HOMBRES:</b><br>""" + str('{:,}'.format(df["q2_Max"][indx]).replace(',','.')) + """</li>
+                        <li><b>HOMBRES:</b><br>""" + str(df["q2_Max"][indx]) + """</li>
                     </ul>
                 </div>
 
@@ -255,7 +159,6 @@ def mapa():
 
         geojson = folium.GeoJson(json.dumps(salida), 
                         name="Censo",
-                        tooltip = "<b>Comuna: </b>" + str(df["COMUNA"][indx]),
                         ).add_to(m)
 
         popup = _popup
