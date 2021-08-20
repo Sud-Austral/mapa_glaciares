@@ -132,7 +132,7 @@ def mapa():
         </style>
         <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
         <br>
-        <h3><center>""" + str(df["Nombre_GLA"][indxDiv]) + """</center></h3>
+        <h3><center>""" + str(dfDiv["Nombre_GLA"][indxDiv]) + """</center></h3>
         <div>
             <ul>
                 <li><b>REGIÓN:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</li>
