@@ -119,17 +119,17 @@ def mapa():
 
     for i in divi:
     
-        cut = i
+        _cut = i
         # print(cut)
         
         df = pd.read_csv(datosDiv)
 
-        df = df[df["Id_Union"] == cut]
+        df = df[df["Id_Union"] == _cut]
         indx = df.index[0]
 
-        output_dict = [x for x in input_dict['features'] if x['properties']['Id_Union'] == str(cut)]
+        output_dict_ = [x for x in input_dict_div['features'] if x['properties']['Id_Union'] == str(_cut)]
 
-        salida = {'type':'FeatureCollection','features':output_dict}
+        salida_ = {'type':'FeatureCollection','features':output_dict_}
 
         html="""
 
@@ -157,8 +157,8 @@ def mapa():
         iframe = folium.IFrame(html=html, width=600, height=680)
         _popup = folium.Popup(iframe, max_width=2650)
 
-        geojson = folium.GeoJson(json.dumps(salida), 
-                        name="Censo",
+        geojson = folium.GeoJson(json.dumps(salida_), 
+                        name="GLACIAR",
                         ).add_to(m)
 
         popup = _popup
