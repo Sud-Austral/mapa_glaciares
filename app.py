@@ -131,7 +131,7 @@ def mapa():
 
         salida_ = {'type':'FeatureCollection','features':output_dict_}
 
-        html="""
+        htmlDiv="""
 
             <style>
                 *{
@@ -173,16 +173,16 @@ def mapa():
             </div>
         """
 
-        iframe = folium.IFrame(html=html, width=290, height=350)
-        _popup = folium.Popup(iframe, max_width=2650)
+        iframe_ = folium.IFrame(html=htmlDiv, width=290, height=350)
+        _popup_ = folium.Popup(iframe_, max_width=2650)
 
-        geojson = folium.GeoJson(json.dumps(salida_), 
+        geojson_ = folium.GeoJson(json.dumps(salida_), 
                         name="GLACIAR",
                         tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"]),
                         ).add_to(m)
 
-        popup = _popup
-        popup.add_to(geojson)
+        popup_ = _popup_
+        popup_.add_to(geojson_)
 
     folium.LayerControl().add_to(m)
 
