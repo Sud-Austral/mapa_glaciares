@@ -173,11 +173,12 @@ def mapa():
             </div>
         """
 
-        iframe = folium.IFrame(html=html, width=400, height=480)
+        iframe = folium.IFrame(html=html, width=290, height=350)
         _popup = folium.Popup(iframe, max_width=2650)
 
         geojson = folium.GeoJson(json.dumps(salida_), 
                         name="GLACIAR",
+                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"]),
                         ).add_to(m)
 
         popup = _popup
