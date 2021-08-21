@@ -133,18 +133,45 @@ def mapa():
 
         html="""
 
-            <div class="container">
-                <div class="contenedor1">
-                    <ul>
-                        <li><h3>INFORMACIÓN GENERAL</h3></li>
-                        <li><b>REGIÓN:</b><br>""" + str(df["NOM_REGION"][indx_]) + """</li>
-                        <li><b>COMUNA:</b><br>""" + str(df["NOM_COMUNA"][indx_]) + """</li>
-                        <li><b>HOMBRES:</b><br>""" + str(df["q2_Max"][indx_]) + """</li>
-                    </ul>
-                </div>
-            </div>
+        <style>
+            *{
+                font-family: Arial, Tahoma;
+                font-size: 13px;
+            }
+            
+            li{
+                list-style:none;
+                margin-left: -40px;
+            }
 
-        """
+            img{
+                width: 70%;
+                height: auto;
+            }
+
+            .banner{
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
+        <br>
+        <h3><center>""" + str(df["Nombre_Gla"][indx_]) + """</center></h3>
+        <div>
+            <ul>
+                <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx_]) + """</li>
+                <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx_]) + """</li>
+                <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx_]) + """</li>
+                <br>
+                <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q1_Min"][indx_]), 1).replace(',','.')) + """</li>
+                <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q1_Max"][indx_]), 1).replace(',','.')) + """</li>
+                <br>
+                <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q2_Min"][indx_]), 1).replace(',','.')) + """</li>
+                <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q2_Max"][indx_]), 1).replace(',','.')) + """</li>
+            </ul>
+            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
+        </div>
+    """
 
         iframe = folium.IFrame(html=html, width=400, height=480)
         _popup = folium.Popup(iframe, max_width=2650)
