@@ -234,6 +234,7 @@ def mapaPeriodo():
     else:
         q = "Inválido"
 
+    
 
     if (str(periodo) == "17-18" and str(q) == "Q1"):
         per = "2017 - 2018"
@@ -307,7 +308,11 @@ def mapaPeriodo():
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
-   
+    datosDiv = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
+    dfDiv = pd.read_csv(datosDiv, sep=",")
+
+    dfDiv = dfDiv[dfDiv["idZonGlac"] == id]
+    indxDiv = dfDiv.index[0]
 
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
@@ -320,6 +325,15 @@ def mapaPeriodo():
 
     salida = {'type':'FeatureCollection','features':output_dict}
     
+    # JSON Glaciar divisiones
+
+    glaciarDivisiones = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion.json"
+
+    input_dict_div = json.loads(requests.get(glaciarDivisiones).content)
+    output_dict_div = [x for x in input_dict_div['features'] if x['properties']['idZonGlac'] == id]
+
+    salida_div = {'type':'FeatureCollection','features':output_dict_div}
+
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
     else:
@@ -378,6 +392,55 @@ def mapaPeriodo():
 
     # POPUP PARA SUBDIVISIONES
 
+    html_div="""
+
+        <style>
+            *{
+                font-family: Arial, Tahoma;
+                font-size: 13px;
+            }
+            
+            li{
+                list-style:none;
+                margin-left: -40px;
+            }
+
+            img{
+                width: 70%;
+                height: auto;
+            }
+
+            .banner{
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
+        <br>
+        <h3><center>""" + str(dfDiv["Nombre_GLA"][indxDiv]) + """</center></h3>
+        <div>
+            <ul>
+                <li><b>REGIÓN:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</li>
+                <li><b>PROVINCIA</b> """ + str(dfDiv["NOM_PROVIN"][indxDiv]) + """</li>
+                <li><b>COMUNA:</b> """ + str(dfDiv["NOM_COMUNA"][indxDiv]) + """</li>
+                <br>
+                <li><b>Código de glaciar:</b> """ + str(dfDiv["COD_GLA"][indxDiv]) + """</li>
+                <li><b>SUBSUBCUENCA:</b> """ + str(dfDiv["NOM_SSUBC"][indxDiv]) + """</li>
+                <br>
+                <li><b>Época: </b>""" + str(qtext) + """</li>
+                <li><b>Período:</b> """ + str(per) + """</li>
+                <li><b>Superficie sin nieve (ha):</b> """ + str('{:,}'.format(round(dfDiv[sn][indxDiv]), 1).replace(',','.')) + """</li>
+                <li><b>Superficie ganancia (ha):</b> """ + str('{:,}'.format(round(dfDiv[g][indxDiv]), 1).replace(',','.')) + """</li>
+                <li><b>Superficie pérdida (ha):</b> """ + str('{:,}'.format(round(dfDiv[p][indxDiv]), 1).replace(',','.')) + """</li>
+                <li><b>Superficie sin cambio (ha):</b> """ + str('{:,}'.format(round(dfDiv[sc][indxDiv]), 1).replace(',','.')) + """</li>
+            </ul>
+            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
+        </div>
+    """
+
+    iframe_div = folium.IFrame(html=html_div, width=290, height=400)
+    _popup_div = folium.Popup(iframe_div, max_width=2650)
+
     iframe = folium.IFrame(html=html, width=280, height=400)
     _popup = folium.Popup(iframe, max_width=2650)
 
@@ -399,6 +462,22 @@ def mapaPeriodo():
     popup = _popup
     popup.add_to(geojson)
 
+    geojson_div = folium.GeoJson(json.dumps(salida_div), 
+                    name="Sectores del complejo glaciar",
+                    style_function = lambda feature: {
+                                "fillColor": "transparent"
+                                if feature["properties"]["idZonGlac"] > 0
+                                else "transparent",
+                                "color": "#edff37",
+                                "weight": 3,
+                            },
+                    tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
+                    aliases = ['SUBCUENCA: '])
+                    ).add_to(m)
+
+    popup_div = _popup_div
+    popup_div.add_to(geojson_div)
+
     # GEOSERVICIOS
 
     # codComuna = "CQL_FILTER=COMUNA=" + idGeo
@@ -409,7 +488,7 @@ def mapaPeriodo():
                         transparent = True,
                         name = nombre,
                         control = True,
-                        attr = "Mapa graciares región 10"
+                        attr = "Mapa de Chile"
                         )
 
     
