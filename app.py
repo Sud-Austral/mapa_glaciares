@@ -121,7 +121,7 @@ def mapa():
     for i in divi:
         
         r = lambda: random.randint(0,255)
-        hexaColor = '"#%02X%02X%02X' % (r(),r(),r()) +'"'
+        hexaColor = '#%02X%02X%02X' % (r(),r(),r())
 
         _union = i
         # print(cut)
@@ -185,7 +185,7 @@ def mapa():
                         style_function = lambda feature: {
                                 "fillColor": "#1381c0"
                                 if feature["properties"]["idZonGlac"] > feature["properties"]["q1_Max"]
-                                else "#f632a3"
+                                else str(hexaColor)
                             },
                         ).add_to(feature_group)
 
