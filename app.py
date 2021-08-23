@@ -115,6 +115,8 @@ def mapa():
     popup = _popup
     popup.add_to(geojson)
 
+    feature_group = FeatureGroup(name="Some icons")
+
     for i in divi:
     
         _union = i
@@ -174,10 +176,7 @@ def mapa():
         iframeDiv = folium.IFrame(html=htmlDiv, width=290, height=350)
         _popupDiv = folium.Popup(iframeDiv, max_width=2650)
 
-        feature_group = FeatureGroup(name="Some icons")
-
-        geojsonDiv = folium.GeoJson(json.dumps(salida_), 
-                        name="GLACIAR",
+        geojsonDiv = folium.GeoJson(json.dumps(salida_),
                         tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"]),
                         ).add_to(feature_group)
 
