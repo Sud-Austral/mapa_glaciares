@@ -122,7 +122,7 @@ def mapa():
         df_ = pd.read_csv(datosDiv, sep=",")
 
         df_ = df_[df_["Id_Union"] == _union]
-        indx_ = df.index[0]
+        indx_ = df_.index[0]
 
         output_dict_ = [x for x in input_dict_div['features'] if x['properties']['Id_Union'] == str(_union)]
 
