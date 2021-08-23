@@ -110,7 +110,7 @@ def mapa():
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Complejo glaciar",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
-                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
+                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_GLA"],
                     aliases = ['GLACIAR: '])
                     ).add_to(m)
 
