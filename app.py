@@ -538,8 +538,8 @@ def mapaPeriodo():
         <li><span style='background:#BF9000;'></span>PÉRDIDA</li>
         <li><span style='background:#47C0F8;'></span>GANANCIA</li>
         <li><span style='background:#FFFFFF;'></span>SIN CAMBIO</li>
-        <li style='font-weight: bolder;'><b style='color:#b2ff00;'>-------</b> Límite complejo glaciar</li>
-        <li style='font-weight: bolder;'><b style='color:#edff37;'>-------</b> Subdivisión glaciar</li>
+        <li><b style='color:#b2ff00; font-weight: 900;'>-------</b> Límite complejo glaciar</li>
+        <li><b style='color:#edff37; font-weight: 900;'>-------</b> Subdivisión glaciar</li>
     </ul>
     </div>
     </div>
