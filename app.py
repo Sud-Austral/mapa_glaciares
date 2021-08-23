@@ -184,7 +184,7 @@ def mapa():
                         tooltip = str(hexaColor),
                         style_function = lambda feature: {
                                 "fillColor": "#1381c0"
-                                if feature["properties"]["idZonGlac"] > feature["properties"]["q1_Max"]
+                                if 1 == 1
                                 else str(hexaColor),
                                 "color": "black",
                                 "weight": 2,
