@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import pandas as pd
+import numpy as np
 import folium
 import json
 import random
@@ -132,7 +133,7 @@ def mapa():
 
         salida_ = {'type':'FeatureCollection','features':output_dict_}
 
-        if(df_["COD_GLA"][indx_] == ""):
+        if(df_["COD_GLA"][indx_] is np.nan):
             codGla = "No definido"
         else:
             codGla = df_["COD_GLA"][indx_]
