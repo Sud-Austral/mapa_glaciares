@@ -129,7 +129,7 @@ def mapa():
         df_ = df_[df_["Id_Union"] == _union]
         indx_ = df_.index[0]
 
-        output_dict_ = [x for x in input_dict_div['features'] if x['properties']['Id_Union'] == str(_union)]
+        output_dict_ = [x for x in input_dict_div['features'] if x['properties']['Id_Union'] == _union]
 
         salida_ = {'type':'FeatureCollection','features':output_dict_}
 
