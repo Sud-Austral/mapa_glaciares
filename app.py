@@ -234,7 +234,6 @@ def mapaPeriodo():
     else:
         q = "Inválido"
 
-    
 
     if (str(periodo) == "17-18" and str(q) == "Q1"):
         per = "2017 - 2018"
@@ -321,8 +320,6 @@ def mapaPeriodo():
 
     salida = {'type':'FeatureCollection','features':output_dict}
     
-   
-
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
     else:
@@ -381,8 +378,6 @@ def mapaPeriodo():
 
     # POPUP PARA SUBDIVISIONES
 
-    
-
     iframe = folium.IFrame(html=html, width=280, height=400)
     _popup = folium.Popup(iframe, max_width=2650)
 
@@ -414,7 +409,7 @@ def mapaPeriodo():
                         transparent = True,
                         name = nombre,
                         control = True,
-                        attr = "Mapa de Chile"
+                        attr = "Mapa graciares región 10"
                         )
 
     
