@@ -27,13 +27,6 @@ def mapa():
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
-    datosDiv = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
-    dfDiv = pd.read_csv(datosDiv, sep=",")
-
-    dfSubc = dfDiv[dfDiv["idZonGlac"] == id]
-    divi = dfSubc["Id_Union"].unique().tolist()
-    divi
-
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
@@ -446,8 +439,7 @@ def mapaPeriodo():
                         start: function (event, ui) {
                             $(this).css({
                                 left: "auto",
-                                top: "auto",
-                                bottom: "auto"
+                                top: "auto"
                             });
                         }
                     });
