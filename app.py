@@ -183,8 +183,8 @@ def mapa():
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
                         tooltip = str(hexaColor),
                         style_function = lambda feature: {
-                                "fillColor": str(hexaColor)
-                                if 1 == 1
+                                "fillColor": "#1381c0"
+                                if feature["properties"]["q2_Max"] > feature["properties"]["q1_Max"]
                                 else str(hexaColor),
                                 "color": "black",
                                 "weight": 2,
