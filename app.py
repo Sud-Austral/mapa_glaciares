@@ -308,12 +308,6 @@ def mapaPeriodo():
     df = df[df["idZonGlac"] == id]
     indx = df.index[0]
 
-    datosDiv = "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/csv/R10_Lim_Glaciares_FINAL_ClipRegion.csv"
-    dfDiv = pd.read_csv(datosDiv, sep=",")
-
-    dfDiv = dfDiv[dfDiv["idZonGlac"] == id]
-    indxDiv = dfDiv.index[0]
-
     url = (
         "https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/json"
     )
@@ -462,7 +456,7 @@ def mapaPeriodo():
         style='position: absolute; z-index:9999; border:2px solid grey; background-color:#FFFFFF;
         border-radius:6px; padding: 10px; font-size:14px; right: 20px; bottom: 20px;'>
         
-    <div class='legend-title'><b>GLACIARES:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</div>
+    <div class='legend-title'><b>GLACIARES:</b> </div>
     <div class='legend-scale'>
     <ul class='legend-labels'>
         <li><span style='background:#BF9000;'></span>PÉRDIDA</li>
