@@ -492,7 +492,7 @@ def mapaPeriodo():
                        aliases = ['SUBSUBCUENCA: ']),
                        style_function=lambda feature: {
                             "fillColor": colormap(feature),
-                            "color": "#b2ff00",
+                            "color": "#edff37",
                             "weight": 3,
                             "dashArray": "5, 5",
                         },
