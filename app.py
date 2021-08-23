@@ -181,7 +181,9 @@ def mapa():
             if feature["properties"]["idZonGlac"] > 0:
                 r = lambda: random.randint(0,255)
                 hexaColor = '#%02X%02X%02X' % (r(),r(),r())
-            
+            else:
+                hexaColor = 'transparent'
+
             return hexaColor
 
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
