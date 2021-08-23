@@ -529,7 +529,7 @@ def mapaPeriodo():
 
     
     <div id='maplegend' class='maplegend' 
-        style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
+        style='position: absolute; z-index:9999; border:2px solid grey; background-color:#FFFFFF;
         border-radius:6px; padding: 10px; font-size:14px; right: 20px; bottom: 20px;'>
         
     <div class='legend-title'><b>GLACIARES:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</div>
@@ -538,8 +538,8 @@ def mapaPeriodo():
         <li><span style='background:#BF9000;'></span>PÉRDIDA</li>
         <li><span style='background:#47C0F8;'></span>GANANCIA</li>
         <li><span style='background:#FFFFFF;'></span>SIN CAMBIO</li>
-        <li><b style='color:#b2ff00'>-------</b> Límite complejo glaciar</li>
-        <li><b style='color:#edff37'>-------</b> Subdivisión glaciar</li>
+        <li><b style='color:#b2ff00; font-weight: bold;'>-------</b> Límite complejo glaciar</li>
+        <li><b style='color:#edff37; font-weight: bold;'>-------</b> Subdivisión glaciar</li>
     </ul>
     </div>
     </div>
