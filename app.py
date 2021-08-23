@@ -91,7 +91,7 @@ def mapa():
         <div>
             <ul>
                 <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
-                <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
+                <li><b>PROVINCIA: </b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
                 <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
                 <br>
                 <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1).replace(',','.')) + """</li>
