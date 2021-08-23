@@ -47,9 +47,6 @@ def mapa():
     glaciarDivisiones = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion.json"
 
     input_dict_div = json.loads(requests.get(glaciarDivisiones).content)
-    output_dict_div = [x for x in input_dict_div['features'] if x['properties']['idZonGlac'] == id]
-
-    salida_div = {'type':'FeatureCollection','features':output_dict_div}
     
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
@@ -116,6 +113,73 @@ def mapa():
 
     popup = _popup
     popup.add_to(geojson)
+
+    for i in divi:
+    
+        _union = i
+        # print(cut)
+        
+        df_ = pd.read_csv(datosDiv, sep=",")
+
+        df_ = df_[df_["Id_Union"] == _union]
+        indx_ = df.index[0]
+
+        output_dict_ = [x for x in input_dict_div['features'] if x['properties']['Id_Union'] == str(_union)]
+
+        salida_ = {'type':'FeatureCollection','features':output_dict_}
+
+        htmlDiv="""
+
+            <style>
+                *{
+                    font-family: Arial, Tahoma;
+                    font-size: 13px;
+                }
+                
+                li{
+                    list-style:none;
+                    margin-left: -40px;
+                }
+
+                img{
+                    width: 70%;
+                    height: auto;
+                }
+
+                .banner{
+                    width: 100%;
+                    height: auto;
+                }
+            </style>
+            <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
+            <br>
+            <h3><center>""" + str(df_["Nombre_GLA"][indx_]) + """</center></h3>
+            <div>
+                <ul>
+                    <li><b>REGIÓN:</b> """ + str(df_["NOM_REGION"][indx_]) + """</li>
+                    <li><b>PROVINCIA</b> """ + str(df_["NOM_PROVIN"][indx_]) + """</li>
+                    <li><b>COMUNA:</b> """ + str(df_["NOM_COMUNA"][indx_]) + """</li>
+                    <br>
+                    <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Min"][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Max"][indx_]), 1).replace(',','.')) + """</li>
+                    <br>
+                    <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q2_Min"][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(df_["q2_Max"][indx_]), 1).replace(',','.')) + """</li>
+                </ul>
+                <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
+            </div>
+        """
+
+        iframeDiv = folium.IFrame(html=htmlDiv, width=290, height=350)
+        _popupDiv = folium.Popup(iframeDiv, max_width=2650)
+
+        geojsonDiv = folium.GeoJson(json.dumps(salida_), 
+                        name="GLACIAR",
+                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"]),
+                        ).add_to(m)
+
+        popupDiv = _popupDiv
+        popupDiv.add_to(geojsonDiv)
 
     folium.LayerControl().add_to(m)
 
