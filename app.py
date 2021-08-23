@@ -87,7 +87,7 @@ def mapa():
         </style>
         <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
         <br>
-        <h3><center>""" + str(df["Nombre_GLA"][indx]) + """</center></h3>
+        <h3><center>""" + str(df["Nombre_Gla"][indx]) + """</center></h3>
         <div>
             <ul>
                 <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
@@ -110,7 +110,7 @@ def mapa():
     geojson = folium.GeoJson(json.dumps(salida), 
                     name="Complejo glaciar",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
-                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_GLA"],
+                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
                     aliases = ['GLACIAR: '])
                     ).add_to(m)
 
