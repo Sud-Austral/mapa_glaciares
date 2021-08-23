@@ -335,7 +335,7 @@ def mapaPeriodo():
     m = folium.Map(
         location=ubicacion,
         zoom_start=13,
-        
+        zoom_control=False
         )
     
     html="""
@@ -445,7 +445,7 @@ def mapaPeriodo():
         $( "#maplegend" ).draggable({
                         start: function (event, ui) {
                             $(this).css({
-                                right: "auto",
+                                left: "auto",
                                 top: "auto",
                                 bottom: "auto"
                             });
