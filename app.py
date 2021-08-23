@@ -108,7 +108,7 @@ def mapa():
     _popup = folium.Popup(iframe, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
-                    name="Límite del complejo glaciar",
+                    name="Complejo glaciar",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
                     aliases = ['GLACIAR: '])
@@ -117,7 +117,7 @@ def mapa():
     popup = _popup
     popup.add_to(geojson)
 
-    feature_group = FeatureGroup(name="Subdivisiones glaciar")
+    feature_group = FeatureGroup(name="Sectores complejo glaciar")
 
     for i in divi:
         
@@ -446,7 +446,7 @@ def mapaPeriodo():
 
 
     geojson = folium.GeoJson(json.dumps(salida), 
-                    name="Glaciar",
+                    name="Complejo glaciar",
                     style_function = lambda feature: {
                                 "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
@@ -463,7 +463,7 @@ def mapaPeriodo():
     popup.add_to(geojson)
 
     geojson_div = folium.GeoJson(json.dumps(salida_div), 
-                    name="Glaciar (subdisivión)",
+                    name="Sectores complejo glaciar",
                     style_function = lambda feature: {
                                 "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
@@ -538,8 +538,8 @@ def mapaPeriodo():
         <li><span style='background:#BF9000;'></span>PÉRDIDA</li>
         <li><span style='background:#47C0F8;'></span>GANANCIA</li>
         <li><span style='background:#FFFFFF;'></span>SIN CAMBIO</li>
-        <li><b style='color:#b2ff00; font-weight: 900;'>-------</b> LÍMITE COMPLEJO GLACIAR</li>
-        <li><b style='color:#edff37; font-weight: 900;'>-------</b> SUBDIVISIÓN GLACIAR</li>
+        <li><b style='color:#b2ff00; font-weight: 900;'>-------</b> COMPLEJO GLACIAR</li>
+        <li><b style='color:#edff37; font-weight: 900;'>-------</b> SECTORES COMPLEJO GLACIAR</li>
     </ul>
     </div>
     </div>
