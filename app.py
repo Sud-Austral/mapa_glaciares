@@ -121,7 +121,7 @@ def mapa():
     for i in divi:
         
         r = lambda: random.randint(0,255)
-        hexaColor = '#%02X%02X%02X' % (r(),r(),r())
+        hexaColor = '"#%02X%02X%02X' % (r(),r(),r()) +'"'
 
         _union = i
         # print(cut)
@@ -183,9 +183,9 @@ def mapa():
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
                         tooltip = str(hexaColor),
                         style_function = lambda feature: {
-                                "fillColor": str(hexaColor)
+                                "fillColor": hexaColor
                                 if feature["properties"]["Id_Union"] != ""
-                                else str(hexaColor)
+                                else hexaColor
                             },
                         ).add_to(feature_group)
 
