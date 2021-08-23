@@ -466,11 +466,12 @@ def mapaPeriodo():
                     <li><b>CÓDIGO GLACIAR:</b> """ + str(codGla) + """</li>
                     <li><b>SUBSUBCUENCA:</b> """ + str(df_["NOM_SSUBC"][indx_]) + """</li>
                     <br>
-                    <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Min"][indx_]), 1).replace(',','.')) + """</li>
-                    <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Max"][indx_]), 1).replace(',','.')) + """</li>
-                    <br>
-                    <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q2_Min"][indx_]), 1).replace(',','.')) + """</li>
-                    <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(df_["q2_Max"][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Época: </b>""" + str(qtext) + """</li>
+                    <li><b>Período:</b> """ + str(per) + """</li>
+                    <li><b>Superficie sin nieve (ha):</b> """ + str('{:,}'.format(round(df_[sn][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Superficie ganancia (ha):</b> """ + str('{:,}'.format(round(df_[g][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Superficie pérdida (ha):</b> """ + str('{:,}'.format(round(df_[p][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Superficie sin cambio (ha):</b> """ + str('{:,}'.format(round(df_[sc][indx_]), 1).replace(',','.')) + """</li>
                 </ul>
                 <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
             </div>
