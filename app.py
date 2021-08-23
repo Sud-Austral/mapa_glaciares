@@ -132,6 +132,11 @@ def mapa():
 
         salida_ = {'type':'FeatureCollection','features':output_dict_}
 
+        if(df["COD_GLA"][indx_] == "No definido"):
+            codGla = ""
+        else:
+            codGla = df["COD_GLA"][indx_]
+
         htmlDiv="""
 
             <style>
@@ -164,6 +169,9 @@ def mapa():
                     <li><b>PROVINCIA</b> """ + str(df_["NOM_PROVIN"][indx_]) + """</li>
                     <li><b>COMUNA:</b> """ + str(df_["NOM_COMUNA"][indx_]) + """</li>
                     <br>
+                    <li><b>CÓDIGO GLACIAR:</b> """ + str(codGla) + """</li>
+                    <li><b>SUBSUBCUENCA:</b> """ + str(df_["NOM_SSUBC"][indx_]) + """</li>
+                    <br>
                     <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Min"][indx_]), 1).replace(',','.')) + """</li>
                     <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Max"][indx_]), 1).replace(',','.')) + """</li>
                     <br>
@@ -174,7 +182,7 @@ def mapa():
             </div>
         """
 
-        iframeDiv = folium.IFrame(html=htmlDiv, width=290, height=350)
+        iframeDiv = folium.IFrame(html=htmlDiv, width=290, height=400)
         _popupDiv = folium.Popup(iframeDiv, max_width=2650)
 
         def colormap(feature):
