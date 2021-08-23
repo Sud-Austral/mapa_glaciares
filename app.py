@@ -387,10 +387,31 @@ def mapaPeriodo():
             <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares_bottom.jpg" alt="Data Intelligence"/></center>
         </div>
     """
+    
+    iframe = folium.IFrame(html=html, width=280, height=400)
+    _popup = folium.Popup(iframe, max_width=2650)
+
+
+    geojson = folium.GeoJson(json.dumps(salida), 
+                    name="Complejo glaciar",
+                    style_function = lambda feature: {
+                                "fillColor": "transparent"
+                                if feature["properties"]["idZonGlac"] > 0
+                                else "transparent",
+                                "color": "#b2ff00",
+                                "weight": 3,
+                                "dashArray": "5, 5",
+                            },
+                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
+                    aliases = ['GLACIAR: '])
+                    ).add_to(m)
+
+    popup = _popup
+    popup.add_to(geojson)
 
     # POPUP PARA SUBDIVISIONES
     feature_group = FeatureGroup(name="Sectores del complejo glaciar")
-    
+
     for i in divi:
         
         _union = i
@@ -460,8 +481,7 @@ def mapaPeriodo():
 
         def colormap(feature):
             if feature["properties"]["idZonGlac"] > 0:
-                r = lambda: random.randint(0,255)
-                hexaColor = '#%02X%02X%02X' % (r(),r(),r())
+                hexaColor = 'transparent'
             else:
                 hexaColor = 'transparent'
 
@@ -471,7 +491,10 @@ def mapaPeriodo():
                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
                        aliases = ['SUBSUBCUENCA: ']),
                        style_function=lambda feature: {
-                            "fillColor": colormap(feature)
+                            "fillColor": colormap(feature),
+                            "color": "#b2ff00",
+                            "weight": 3,
+                            "dashArray": "5, 5",
                         },
                         ).add_to(feature_group)
 
@@ -479,27 +502,6 @@ def mapaPeriodo():
         popupDiv.add_to(geojsonDiv)
 
     feature_group.add_to(m)
-
-    iframe = folium.IFrame(html=html, width=280, height=400)
-    _popup = folium.Popup(iframe, max_width=2650)
-
-
-    geojson = folium.GeoJson(json.dumps(salida), 
-                    name="Complejo glaciar",
-                    style_function = lambda feature: {
-                                "fillColor": "transparent"
-                                if feature["properties"]["idZonGlac"] > 0
-                                else "transparent",
-                                "color": "#b2ff00",
-                                "weight": 3,
-                                "dashArray": "5, 5",
-                            },
-                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
-                    aliases = ['GLACIAR: '])
-                    ).add_to(m)
-
-    popup = _popup
-    popup.add_to(geojson)
 
     # GEOSERVICIOS
 
