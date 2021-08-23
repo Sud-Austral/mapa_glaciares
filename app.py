@@ -117,7 +117,7 @@ def mapa():
     popup = _popup
     popup.add_to(geojson)
 
-    feature_group = FeatureGroup(name="Sectores complejo glaciar")
+    feature_group = FeatureGroup(name="Sectores del complejo glaciar")
 
     for i in divi:
         
@@ -463,7 +463,7 @@ def mapaPeriodo():
     popup.add_to(geojson)
 
     geojson_div = folium.GeoJson(json.dumps(salida_div), 
-                    name="Sectores complejo glaciar",
+                    name="Sectores del complejo glaciar",
                     style_function = lambda feature: {
                                 "fillColor": "transparent"
                                 if feature["properties"]["idZonGlac"] > 0
@@ -539,7 +539,7 @@ def mapaPeriodo():
         <li><span style='background:#47C0F8;'></span>GANANCIA</li>
         <li><span style='background:#FFFFFF;'></span>SIN CAMBIO</li>
         <li><b style='color:#b2ff00; font-weight: 900;'>-------</b> COMPLEJO GLACIAR</li>
-        <li><b style='color:#edff37; font-weight: 900;'>-------</b> SECTORES COMPLEJO GLACIAR</li>
+        <li><b style='color:#edff37; font-weight: 900;'>-------</b> SECTORES DEL COMPLEJO GLACIAR</li>
     </ul>
     </div>
     </div>
