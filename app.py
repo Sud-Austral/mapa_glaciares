@@ -132,10 +132,10 @@ def mapa():
 
         salida_ = {'type':'FeatureCollection','features':output_dict_}
 
-        if(df["COD_GLA"][indx_] == "No definido"):
+        if(df_["COD_GLA"][indx_] == "No definido"):
             codGla = ""
         else:
-            codGla = df["COD_GLA"][indx_]
+            codGla = df_["COD_GLA"][indx_]
 
         htmlDiv="""
 
