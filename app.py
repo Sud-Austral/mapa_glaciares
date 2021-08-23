@@ -117,6 +117,98 @@ def mapa():
     popup = _popup
     popup.add_to(geojson)
 
+    feature_group = FeatureGroup(name="Sectores del complejo glaciar")
+
+    for i in divi:
+        
+        _union = i
+        # print(cut)
+        
+        df_ = pd.read_csv(datosDiv, sep=",")
+
+        df_ = df_[df_["Id_Union"] == _union]
+        indx_ = df_.index[0]
+
+        output_dict_ = [x for x in input_dict_div['features'] if x['properties']['Id_Union'] == str(_union)]
+
+        salida_ = {'type':'FeatureCollection','features':output_dict_}
+
+        if(df_["COD_GLA"][indx_] is np.nan):
+            codGla = "No definido"
+        else:
+            codGla = df_["COD_GLA"][indx_]
+
+        htmlDiv="""
+
+            <style>
+                *{
+                    font-family: Arial, Tahoma;
+                    font-size: 13px;
+                }
+                
+                li{
+                    list-style:none;
+                    margin-left: -40px;
+                }
+
+                img{
+                    width: 70%;
+                    height: auto;
+                }
+
+                .banner{
+                    width: 100%;
+                    height: auto;
+                }
+            </style>
+            <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
+            <br>
+            <h3><center>""" + str(df_["Nombre_GLA"][indx_]) + """</center></h3>
+            <div>
+                <ul>
+                    <li><b>REGIÓN:</b> """ + str(df_["NOM_REGION"][indx_]) + """</li>
+                    <li><b>PROVINCIA</b> """ + str(df_["NOM_PROVIN"][indx_]) + """</li>
+                    <li><b>COMUNA:</b> """ + str(df_["NOM_COMUNA"][indx_]) + """</li>
+                    <br>
+                    <li><b>CÓDIGO GLACIAR:</b> """ + str(codGla) + """</li>
+                    <li><b>SUBSUBCUENCA:</b> """ + str(df_["NOM_SSUBC"][indx_]) + """</li>
+                    <br>
+                    <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Min"][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Max"][indx_]), 1).replace(',','.')) + """</li>
+                    <br>
+                    <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q2_Min"][indx_]), 1).replace(',','.')) + """</li>
+                    <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(df_["q2_Max"][indx_]), 1).replace(',','.')) + """</li>
+                </ul>
+                <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
+            </div>
+        """
+
+        iframeDiv = folium.IFrame(html=htmlDiv, width=290, height=400)
+        _popupDiv = folium.Popup(iframeDiv, max_width=2650)
+
+        def colormap(feature):
+            if feature["properties"]["idZonGlac"] > 0:
+                r = lambda: random.randint(0,255)
+                hexaColor = '#%02X%02X%02X' % (r(),r(),r())
+            else:
+                hexaColor = 'transparent'
+
+            return hexaColor
+
+        geojsonDiv = folium.GeoJson(json.dumps(salida_),
+                       tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
+                       aliases = ['SUBSUBCUENCA: ']),
+                       style_function=lambda feature: {
+                            "fillColor": colormap(feature)
+                        },
+                        ).add_to(feature_group)
+
+        popupDiv = _popupDiv
+        popupDiv.add_to(geojsonDiv)
+
+    feature_group.add_to(m)
+    folium.LayerControl().add_to(m)
+
     return m._repr_html_()
 
 
