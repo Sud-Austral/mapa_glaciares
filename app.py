@@ -120,12 +120,6 @@ def mapa():
 
     for i in divi:
         
-        r = lambda: random.randint(0,255)
-        hexaColor = '#%02X%02X%02X' % (r(),r(),r())
-
-        r2 = lambda: random.randint(0,255)
-        hexaColor2 = '#%02X%02X%02X' % (r2(),r2(),r2())
-
         _union = i
         # print(cut)
         
@@ -183,9 +177,23 @@ def mapa():
         iframeDiv = folium.IFrame(html=htmlDiv, width=290, height=350)
         _popupDiv = folium.Popup(iframeDiv, max_width=2650)
 
+        def colormap(feature):
+            if feature["properties"]["idZonGlac"] > 0:
+                r = lambda: random.randint(0,255)
+                hexaColor = '#%02X%02X%02X' % (r(),r(),r())
+            
+            return hexaColor
+
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
-                       aliases = ['SUBSUBCUENCA: '])
+                       aliases = ['SUBSUBCUENCA: ']),
+                       style_function=lambda feature: {
+                            "fillColor": colormap(feature),
+                            "color": "black",
+                            "weight": 1,
+                            "dashArray": "5, 5",
+                            "fillOpacity": 0.9,
+                        },
                         ).add_to(feature_group)
 
         popupDiv = _popupDiv
