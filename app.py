@@ -3,6 +3,7 @@ from flask import request
 import pandas as pd
 import folium
 import json
+import random
 import requests
 from folium.plugins import HeatMapWithTime
 from branca.element import Template, MacroElement
@@ -106,7 +107,7 @@ def mapa():
     _popup = folium.Popup(iframe, max_width=2650)
 
     geojson = folium.GeoJson(json.dumps(salida), 
-                    name="Glaciar",
+                    name="Límite del complejo glaciar",
                     # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
                     tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
                     aliases = ['GLACIAR: '])
@@ -115,10 +116,13 @@ def mapa():
     popup = _popup
     popup.add_to(geojson)
 
-    feature_group = FeatureGroup(name="Some icons")
+    feature_group = FeatureGroup(name="Subdivisiones glaciar")
 
     for i in divi:
-    
+        
+        r = lambda: random.randint(0,255)
+        hexaColor = '#%02X%02X%02X' % (r(),r(),r())
+
         _union = i
         # print(cut)
         
@@ -178,6 +182,11 @@ def mapa():
 
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
                         tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"]),
+                        style_function = lambda feature: {
+                                "fillColor": hexaColor
+                                if feature["properties"]["Id_Union"] > 0
+                                else hexaColor
+                            },
                         ).add_to(feature_group)
 
         popupDiv = _popupDiv
