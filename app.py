@@ -535,11 +535,11 @@ def mapaPeriodo():
     <div class='legend-title'><b>GLACIARES:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</div>
     <div class='legend-scale'>
     <ul class='legend-labels'>
-        <li><span style='background:#BF9000;opacity:0.7;'></span>PÉRDIDA</li>
-        <li><span style='background:#47C0F8;opacity:0.7;'></span>GANANCIA</li>
-        <li><span style='background:#FFFFFF;opacity:0.7;'></span>SIN CAMBIO</li>
-        <li><span style='color:#b2ff00'>---</span>Límite complejo glaciar</li>
-        <li><span style='color:#edff37'>---</span>Subdivisión glaciar</li>
+        <li><span style='background:#BF9000;'></span>PÉRDIDA</li>
+        <li><span style='background:#47C0F8;'></span>GANANCIA</li>
+        <li><span style='background:#FFFFFF;'></span>SIN CAMBIO</li>
+        <li>---</li>Límite complejo glaciar
+        <li>---Subdivisión glaciar</li>
     </ul>
     </div>
     </div>
