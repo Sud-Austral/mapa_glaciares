@@ -6,6 +6,7 @@ import json
 import requests
 from folium.plugins import HeatMapWithTime
 from branca.element import Template, MacroElement
+from folium import FeatureGroup, LayerControl, Map, Marker
 
 app = Flask(__name__)
 
@@ -58,6 +59,61 @@ def mapa():
         zoom_start=13,
         
         )
+    
+    html="""
+
+        <style>
+            *{
+                font-family: Arial, Tahoma;
+                font-size: 13px;
+            }
+            
+            li{
+                list-style:none;
+                margin-left: -40px;
+            }
+
+            img{
+                width: 70%;
+                height: auto;
+            }
+
+            .banner{
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
+        <br>
+        <h3><center>""" + str(df["Nombre_Gla"][indx]) + """</center></h3>
+        <div>
+            <ul>
+                <li><b>REGIÓN:</b> """ + str(df["NOM_REGION"][indx]) + """</li>
+                <li><b>PROVINCIA</b> """ + str(df["NOM_PROVIN"][indx]) + """</li>
+                <li><b>COMUNA:</b> """ + str(df["NOM_COMUNA"][indx]) + """</li>
+                <br>
+                <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q1_Min"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q1 (Ene-Abr) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q1_Max"][indx]), 1).replace(',','.')) + """</li>
+                <br>
+                <li><b>Q2 (May-Dic) Mínima (ha):</b> """ + str('{:,}'.format(round(df["q2_Min"][indx]), 1).replace(',','.')) + """</li>
+                <li><b>Q2 (May-Dic) Máxima (ha):</b> """ + str('{:,}'.format(round(df["q2_Max"][indx]), 1).replace(',','.')) + """</li>
+            </ul>
+            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
+        </div>
+    """
+
+    iframe = folium.IFrame(html=html, width=290, height=350)
+    _popup = folium.Popup(iframe, max_width=2650)
+
+    geojson = folium.GeoJson(json.dumps(salida), 
+                    name="Glaciar",
+                    # tooltip=folium.GeoJsonTooltip(fields=["q1_SN", "q2_SN"])
+                    tooltip = folium.GeoJsonTooltip(fields=["Nombre_Gla"],
+                    aliases = ['GLACIAR: '])
+                    ).add_to(m)
+
+    popup = _popup
+    popup.add_to(geojson)
 
     for i in divi:
     
@@ -118,14 +174,17 @@ def mapa():
         iframeDiv = folium.IFrame(html=htmlDiv, width=290, height=350)
         _popupDiv = folium.Popup(iframeDiv, max_width=2650)
 
+        feature_group = FeatureGroup(name="Some icons")
+
         geojsonDiv = folium.GeoJson(json.dumps(salida_), 
                         name="GLACIAR",
                         tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"]),
-                        ).add_to(m)
+                        ).add_to(feature_group)
 
         popupDiv = _popupDiv
         popupDiv.add_to(geojsonDiv)
 
+    feature_group.add_to(m)
     folium.LayerControl().add_to(m)
 
     return m._repr_html_()
