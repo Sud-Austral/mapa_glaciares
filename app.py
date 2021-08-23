@@ -182,11 +182,7 @@ def mapa():
 
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
                         tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"]),
-                        style_function = lambda feature: {
-                                "fillColor": hexaColor
-                                if feature["properties"]["Id_Union"] > 0
-                                else hexaColor
-                            },
+                  
                         ).add_to(feature_group)
 
         popupDiv = _popupDiv
