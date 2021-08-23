@@ -185,7 +185,7 @@ def mapa():
                         style_function = lambda feature: {
                                 "fillColor": "#1381c0"
                                 if feature["properties"]["idZonGlac"] > feature["properties"]["q1_Max"]
-                                else "transparent",
+                                else str(hexaColor),
                                 "color": "black",
                                 "weight": 2,
                             },
