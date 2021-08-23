@@ -117,8 +117,6 @@ def mapa():
     popup = _popup
     popup.add_to(geojson)
 
-    
-
     return m._repr_html_()
 
 
