@@ -123,6 +123,9 @@ def mapa():
         r = lambda: random.randint(0,255)
         hexaColor = '#%02X%02X%02X' % (r(),r(),r())
 
+        r2 = lambda: random.randint(0,255)
+        hexaColor2 = '#%02X%02X%02X' % (r2(),r2(),r2())
+
         _union = i
         # print(cut)
         
@@ -183,9 +186,9 @@ def mapa():
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
                         tooltip = str(hexaColor),
                         style_function = lambda feature: {
-                                "fillColor": "#1381c0"
+                                "fillColor": str(hexaColor)
                                 if feature["properties"]["q2_Max"] > feature["properties"]["q1_Max"]
-                                else str(hexaColor),
+                                else str(hexaColor2),
                                 "color": "black",
                                 "weight": 2,
                             },
