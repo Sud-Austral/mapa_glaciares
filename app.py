@@ -190,11 +190,7 @@ def mapa():
                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
                        aliases = ['SUBSUBCUENCA: ']),
                        style_function=lambda feature: {
-                            "fillColor": colormap(feature),
-                            "color": "black",
-                            "weight": 1,
-                            "dashArray": "5, 5",
-                            "fillOpacity": 0.9,
+                            "fillColor": colormap(feature)
                         },
                         ).add_to(feature_group)
 
