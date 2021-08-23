@@ -392,54 +392,7 @@ def mapaPeriodo():
 
     # POPUP PARA SUBDIVISIONES
 
-    html_div="""
-
-        <style>
-            *{
-                font-family: Arial, Tahoma;
-                font-size: 13px;
-            }
-            
-            li{
-                list-style:none;
-                margin-left: -40px;
-            }
-
-            img{
-                width: 70%;
-                height: auto;
-            }
-
-            .banner{
-                width: 100%;
-                height: auto;
-            }
-        </style>
-        <center><img class="banner" src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/Glaciares.jpg" alt="Data Intelligence"/></center>
-        <br>
-        <h3><center>""" + str(dfDiv["Nombre_GLA"][indxDiv]) + """</center></h3>
-        <div>
-            <ul>
-                <li><b>REGIÓN:</b> """ + str(dfDiv["NOM_REGION"][indxDiv]) + """</li>
-                <li><b>PROVINCIA</b> """ + str(dfDiv["NOM_PROVIN"][indxDiv]) + """</li>
-                <li><b>COMUNA:</b> """ + str(dfDiv["NOM_COMUNA"][indxDiv]) + """</li>
-                <br>
-                <li><b>Código de glaciar:</b> """ + str(dfDiv["COD_GLA"][indxDiv]) + """</li>
-                <li><b>SUBSUBCUENCA:</b> """ + str(dfDiv["NOM_SSUBC"][indxDiv]) + """</li>
-                <br>
-                <li><b>Época: </b>""" + str(qtext) + """</li>
-                <li><b>Período:</b> """ + str(per) + """</li>
-                <li><b>Superficie sin nieve (ha):</b> """ + str('{:,}'.format(round(dfDiv[sn][indxDiv]), 1).replace(',','.')) + """</li>
-                <li><b>Superficie ganancia (ha):</b> """ + str('{:,}'.format(round(dfDiv[g][indxDiv]), 1).replace(',','.')) + """</li>
-                <li><b>Superficie pérdida (ha):</b> """ + str('{:,}'.format(round(dfDiv[p][indxDiv]), 1).replace(',','.')) + """</li>
-                <li><b>Superficie sin cambio (ha):</b> """ + str('{:,}'.format(round(dfDiv[sc][indxDiv]), 1).replace(',','.')) + """</li>
-            </ul>
-            <center><img src="https://raw.githubusercontent.com/Sud-Austral/mapa_glaciares/main/img/logo_DataIntelligence_normal.png" alt="Data Intelligence"/></center>
-        </div>
-    """
-
-    iframe_div = folium.IFrame(html=html_div, width=290, height=400)
-    _popup_div = folium.Popup(iframe_div, max_width=2650)
+    
 
     iframe = folium.IFrame(html=html, width=280, height=400)
     _popup = folium.Popup(iframe, max_width=2650)
@@ -461,22 +414,6 @@ def mapaPeriodo():
 
     popup = _popup
     popup.add_to(geojson)
-
-    geojson_div = folium.GeoJson(json.dumps(salida_div), 
-                    name="Sectores del complejo glaciar",
-                    style_function = lambda feature: {
-                                "fillColor": "transparent"
-                                if feature["properties"]["idZonGlac"] > 0
-                                else "transparent",
-                                "color": "#edff37",
-                                "weight": 3,
-                            },
-                    tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
-                    aliases = ['SUBCUENCA: '])
-                    ).add_to(m)
-
-    popup_div = _popup_div
-    popup_div.add_to(geojson_div)
 
     # GEOSERVICIOS
 
