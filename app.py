@@ -327,13 +327,6 @@ def mapaPeriodo():
     
     # JSON Glaciar divisiones
 
-    glaciarDivisiones = f"{url}/R10_Lim_Glaciares_FINAL_ClipRegion.json"
-
-    input_dict_div = json.loads(requests.get(glaciarDivisiones).content)
-    output_dict_div = [x for x in input_dict_div['features'] if x['properties']['idZonGlac'] == id]
-
-    salida_div = {'type':'FeatureCollection','features':output_dict_div}
-
     if (id != ""):
         ubicacion = [float(df["Y"][indx]), float(df["X"][indx])]
     else:
