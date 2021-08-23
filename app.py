@@ -184,12 +184,8 @@ def mapa():
         _popupDiv = folium.Popup(iframeDiv, max_width=2650)
 
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
-                        tooltip = str(hexaColor),
-                        style_function = lambda feature: {
-                                "fillColor": str(hexaColor)
-                                if feature["properties"]["q2_Max"] > feature["properties"]["q1_Max"]
-                                else str(hexaColor2)
-                            },
+                       tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
+                       aliases = ['SUBSUBCUENCA: '])
                         ).add_to(feature_group)
 
         popupDiv = _popupDiv
