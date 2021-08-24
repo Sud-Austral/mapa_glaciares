@@ -124,7 +124,7 @@ def mapa():
         _union = i
         # print(cut)
         
-        df_ = pd.read_csv(datosDiv, sep=",")
+        df_ = dfDiv
 
         df_ = df_[df_["Id_Union"] == _union]
         indx_ = df_.index[0]
@@ -417,7 +417,7 @@ def mapaPeriodo():
         _union = i
         # print(cut)
         
-        df_ = pd.read_csv(datosDiv, sep=",")
+        df_ = dfDiv
 
         df_ = df_[df_["Id_Union"] == _union]
         indx_ = df_.index[0]
