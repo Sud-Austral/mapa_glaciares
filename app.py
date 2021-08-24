@@ -171,6 +171,7 @@ def mapa():
                     <li><b>COMUNA:</b> """ + str(df_["NOM_COMUNA"][indx_]) + """</li>
                     <br>
                     <li><b>CÓDIGO GLACIAR:</b> """ + str(codGla) + """</li>
+                    <li><b>NOMBRE DE GLACIAR:</b> """ + str(df_["NOMBRE"][indx_]) + """</li>
                     <li><b>SUBSUBCUENCA:</b> """ + str(df_["NOM_SSUBC"][indx_]) + """</li>
                     <br>
                     <li><b>Q1 (Ene-Abr) Mínima (ha):</b> """ + str('{:,}'.format(round(df_["q1_Min"][indx_]), 1).replace(',','.')) + """</li>
@@ -464,6 +465,7 @@ def mapaPeriodo():
                     <li><b>COMUNA:</b> """ + str(df_["NOM_COMUNA"][indx_]) + """</li>
                     <br>
                     <li><b>CÓDIGO GLACIAR:</b> """ + str(codGla) + """</li>
+                    <li><b>NOMBRE DE GLACIAR:</b> """ + str(df_["NOMBRE"][indx_]) + """</li>
                     <li><b>SUBSUBCUENCA:</b> """ + str(df_["NOM_SSUBC"][indx_]) + """</li>
                     <br>
                     <li><b>Época: </b>""" + str(qtext) + """</li>
