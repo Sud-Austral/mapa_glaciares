@@ -117,7 +117,7 @@ def mapa():
     popup = _popup
     popup.add_to(geojson)
 
-    feature_group = FeatureGroup(name="Sectores del complejo glaciar")
+    feature_group = FeatureGroup(name="Sectores del complejo glaciar", show=False)
 
     for i in divi:
         
@@ -196,7 +196,6 @@ def mapa():
             return hexaColor
 
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
-                       show=False,
                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
                        aliases = ['SUBSUBCUENCA: ']),
                        style_function=lambda feature: {
