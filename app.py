@@ -207,7 +207,6 @@ def mapa():
         popupDiv.add_to(geojsonDiv)
 
     feature_group.add_to(m)
-    folium.LayerControl(collapsed=False).add_to(m)
     folium.LayerControl().add_to(m)
     
 
