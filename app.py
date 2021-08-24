@@ -198,6 +198,7 @@ def mapa():
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
                        aliases = ['SUBSUBCUENCA: ']),
+                       show=False,
                        style_function=lambda feature: {
                             "fillColor": colormap(feature)
                         },
