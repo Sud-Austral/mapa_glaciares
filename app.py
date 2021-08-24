@@ -196,9 +196,9 @@ def mapa():
             return hexaColor
 
         geojsonDiv = folium.GeoJson(json.dumps(salida_),
+                       show=False,
                        tooltip = folium.GeoJsonTooltip(fields=["NOM_SSUBC"],
                        aliases = ['SUBSUBCUENCA: ']),
-                       show=False,
                        style_function=lambda feature: {
                             "fillColor": colormap(feature)
                         },
@@ -209,7 +209,6 @@ def mapa():
 
     feature_group.add_to(m)
     folium.LayerControl().add_to(m)
-    
 
     return m._repr_html_()
 
