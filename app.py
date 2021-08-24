@@ -410,7 +410,7 @@ def mapaPeriodo():
     popup.add_to(geojson)
 
     # POPUP PARA SUBDIVISIONES
-    feature_group = FeatureGroup(name="Sectores del complejo glaciar")
+    feature_group = FeatureGroup(name="Sectores del complejo glaciar", show=False)
 
     for i in divi:
         
@@ -514,7 +514,8 @@ def mapaPeriodo():
                         transparent = True,
                         name = nombre,
                         control = True,
-                        attr = "Mapa de Chile"
+                        attr = "Mapa de Chile",
+                        show=False
                         )
 
     
